@@ -6,20 +6,28 @@
     text-decoration: none;
 }
 .header {
-    background: #2dd4cf;
+    background: #1d172c;
     display: flex;
     justify-content: space-between;
     padding: 40px;
 }
-.header-title {
+.header__title {
     color: #fff;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 40px;
+    height: 60px;
+    padding-top: 10px;
 }
-.header-button {
+.header__button {
     width: 150px;
     height: 60px;
-    font-size: 20px;
-    background: #eee3de;
-    border: 4px solid #e06d2b;
+    font-size: 21px;
+    background: #e06d2b;
+    border: none;
+    font-family: 'Roboto';
+    font-weight: 300;
+    color: #1d172c;
 }
 .header-article {
     display: none;
@@ -46,6 +54,9 @@
     z-index: 10;
     top: 170px;
 }
+.dictionary-pages__svg {
+    color: #1d172c;
+}
 .dictionary-pages-right {
     left: -30px;
 }
@@ -57,7 +68,9 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 40px;
+    height: 100px;
+    padding: 20px;
     margin-top: 30px;
-    background: #2dd4cf;
+    background: #1d172c;
+    color: #fff;
 }
