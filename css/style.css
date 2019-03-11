@@ -5,7 +5,11 @@
     list-style: none;
     text-decoration: none;
 }
+body {
+    background: #f3d2be;
+}
 .header {
+    width: 100%;
     background: #1d172c;
     display: flex;
     justify-content: space-between;
@@ -51,12 +55,12 @@
     display: block;
 }
 .main {
+    width: 100%;
     display: flex;
     padding-top: 35px;
     padding-bottom: 35px;
     padding-left: 200px;
     padding-right: 350px;
-    background: #f3d2be;
     justify-content: space-between;
 }
 .main-menu-list__title {
@@ -91,11 +95,11 @@
 .dictionary-pages__svg {
     color: #1d172c;
 }
-.dictionary-pages-right {
-    left: -30px;
+.js-dictionary-pages-right {
+    left: -40px;
 }
-.dictionary-pages-left {
-    right: -30px;
+.js-dictionary-pages-left {
+    right: -40px;
 }
 .footer {
     width: 100%;
@@ -103,4 +107,7 @@
     padding: 20px;
     background: #1d172c;
     color: #fff;
+    bottom: 0;
+    left: 0;
+    position: absolute;
 }
