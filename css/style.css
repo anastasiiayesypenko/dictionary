@@ -24,9 +24,9 @@ body {
     padding-top: 10px;
 }
 .header__button {
-    width: 180px;
+    width: 200px;
     height: 60px;
-    font-size: 21px;
+    font-size: 23px;
     background: #e67433;
     border: none;
     font-family: 'Roboto';
@@ -47,7 +47,7 @@ body {
     opacity: 0;
     padding: 10px;
     background: #f0884c;
-    width: 180px;
+    width: 200px;
     right: 0;
 }
 .header__button:hover + .header__article{
@@ -62,6 +62,10 @@ body {
     padding-left: 200px;
     padding-right: 350px;
     justify-content: space-between;
+}
+.dictionary-pages__svg {
+    width: 50px;
+    height: 50px;
 }
 .main-menu-list__title {
     padding: 17px;
@@ -79,8 +83,8 @@ body {
     position: relative;
 }
 .dictionary-pages-image {
-    width: 300px;
-    height: 420px;
+    width: 320px;
+    height: 500px;
 }
 .dictionary-pages-button {
     border-radius: 50px;
