@@ -16,7 +16,7 @@ function onLoaded() {
     };
     function onRightClick() {
         dictionaryImage.removeAttribute('src');
-        dictionaryImage.setAttribute('src', './img/page2.jpg');
+        dictionaryImage.setAttribute('src', dictionarySources[0]);
     };
     leftButton.addEventListener('click', onLeftClick);
     rightButton.addEventListener('click', onRightClick);

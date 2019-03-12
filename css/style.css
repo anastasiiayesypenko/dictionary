@@ -100,16 +100,16 @@ body {
     color: #1d172c;
 }
 .js-dictionary-pages-right {
-    left: -40px;
+    right: -40px;
 }
 .js-dictionary-pages-left {
-    right: -40px;
+    left: -40px;
 }
 .footer {
     width: 100%;
-    font-size: 27px;
+    font-size: 17px;
     font-family: 'Roboto';
-    height: 300px;
+    height: 200px;
     margin-top: 20px;
     padding: 20px;
     background: #1d172c;
