@@ -24,7 +24,7 @@ body {
     padding-top: 10px;
 }
 .header__button {
-    width: 200px;
+    width: 270px;
     height: 60px;
     font-size: 23px;
     background: #e67433;
@@ -32,6 +32,7 @@ body {
     font-family: 'Roboto';
     font-weight: 300;
     color: #1d172c;
+    outline: none;
 }
 .header__button:hover {
     background: #eeb899;
@@ -43,24 +44,29 @@ body {
 .header__article {
     position: absolute;
     color: #fff;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.3;
     margin-top: 10px;
-    opacity: 0;
-    padding: 10px;
+    padding: 15px;
     background: #f0884c;
-    width: 200px;
+    width: 270px;
     right: 0;
+    /* text-align: justify; */
 }
-.header__button:hover + .header__article{
-    opacity: 1;
-    display: block;
+.header__about-us-link {
+    color: #473b68;
+    font-family: 'Roboto';
+    font-weight: normal;
 }
 .main {
     width: 100%;
     display: flex;
     padding-top: 45px;
     padding-bottom: 55px;
-    padding-left: 280px;
-    padding-right: 370px;
+    padding-left: 150px;
+    padding-right: 520px;
     justify-content: space-between;
 }
 .dictionary-pages__svg {
@@ -69,6 +75,7 @@ body {
 }
 .main-menu-list__title {
     padding: 17px;
+    color: #1d172c;
 }
 .main-menu-list__title:hover {
     background: #f0884c;
@@ -77,7 +84,7 @@ body {
     font-family: 'Roboto';
     font-weight: 300;
     font-size: 25px;
-
+    color: #473b68;
 }
 .dictionary-pages {
     position: relative;
@@ -95,6 +102,13 @@ body {
     position: absolute;
     z-index: 10;
     top: 220px;
+    outline: none;
+}
+.dictionary-pages-button:disabled {
+    opacity: 0.5;
+}
+.dictionary-pages-button:disabled .dictionary-pages__svg {
+    opacity: 0.5;
 }
 .dictionary-pages__svg {
     color: #1d172c;
