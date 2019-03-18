@@ -4,10 +4,20 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
+    font-family: 'Roboto';
 }
 body {
     background: #f3d2be;
 }
+/* .toTop-link {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url('https://image.flaticon.com/icons/svg/137/137608.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  } */
 .header {
     width: 100%;
     background: #1d172c;
@@ -60,13 +70,13 @@ body {
     font-family: 'Roboto';
     font-weight: normal;
 }
-.main {
+.main-page-wrapper {
     width: 100%;
     display: flex;
     padding-top: 45px;
-    padding-bottom: 55px;
+    padding-bottom: 75px;
     padding-left: 150px;
-    padding-right: 520px;
+    padding-right: 510px;
     justify-content: space-between;
 }
 .dictionary-pages__svg {
@@ -81,7 +91,6 @@ body {
     background: #f0884c;
 }
 .main-menu-list__link {
-    font-family: 'Roboto';
     font-weight: 300;
     font-size: 25px;
     color: #473b68;
@@ -119,12 +128,84 @@ body {
 .js-dictionary-pages-left {
     left: -40px;
 }
+.people-involved-section {
+    height: 800px;
+    background: #1d172c;
+    color: #fff;
+}
+.people-involved-section__title {
+    padding: 40px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    font-weight: 300;
+    font-size: 40px;
+}
+.people-involved-section__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    width: 1000px;
+    margin: 0 auto;
+}
+.people-involved-section__figure {
+    position: relative;
+    margin: 10px;
+}
+.people-involved-section__image {
+    width: 250px;
+    height: 250px;
+}
+.people-involved-section__imagediv::after {
+    content: "тут буде написано, який внесок і тд";
+    color: #1d172c;
+    font-family: 'Roboto';
+    text-align: center;
+    padding: 20px;
+    padding-top: 100px;
+    font-size: 21px;
+    box-sizing: border-box;
+    display: block;
+    background: linear-gradient(to left, rgba(235, 127, 25, 0.89), rgba(247, 130, 84, 0.883));
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 251px;
+    height: 251px;
+    opacity: 0;
+}
+.people-involved-section__imagediv:hover::after {
+    opacity: 1;
+}
+.people-involved-section__figcaption {
+    font-weight: 300;
+    font-size: 20px;
+    margin: 5px;
+}
+.about-project {
+    background: #f3d2be;
+    height: 2200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px;
+    padding-top: 40px;
+}
+.about-project__title {
+    font-weight: 300;
+    font-size: 40px;
+    text-align: center;
+    margin: 0 auto;
+    width: 900px;
+}
+.about-project__article {
+    font-weight: 300;
+    font-size: 18px;
+    margin-top: 30px;
+}
 .footer {
-    width: 100%;
     font-size: 17px;
     font-family: 'Roboto';
     height: 200px;
-    margin-top: 20px;
     padding: 20px;
     background: #1d172c;
     color: #fff;

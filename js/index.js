@@ -43,4 +43,5 @@ function onLoaded() {
     };
     leftButton.addEventListener('click', onLeftClick);
     rightButton.addEventListener('click', onRightClick);
+    
 }
