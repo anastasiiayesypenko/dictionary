@@ -18,6 +18,19 @@ body {
     background-position: center;
     background-repeat: no-repeat;
   } */
+.toTop-link {
+    display: inline-block;
+    width: 79px;
+    height: 79px;
+    background-image: url('https://vectr.com/irish_whiskey/b4qD3Pujp.svg?width=640&height=640&select=b4qD3Pujppage0');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    bottom: 50px;
+    right: 50px;
+    z-index: 200;
+    position: fixed;
+}
 .header {
     width: 100%;
     background: #1d172c;
@@ -36,17 +49,32 @@ body {
 .header__button {
     width: 270px;
     height: 60px;
+    background: #e67433;
+    border: none;
+    outline: none;
+}
+.header__button:hover {
+    background: #eeb899;
+    border: 3px solid #f0884c;
+}
+.header__button:hover .header__buttonLink{
+    background: #eeb899;
+    height: 54px;
+    width: 264px;
+    padding-top: 13px;
+}
+.header__buttonLink {
+    display: block;
+    width: 270px;
+    height: 60px;
+    padding-top: 16px;
+    text-align: center;
     font-size: 23px;
     background: #e67433;
     border: none;
     font-family: 'Roboto';
     font-weight: 300;
     color: #1d172c;
-    outline: none;
-}
-.header__button:hover {
-    background: #eeb899;
-    border: 3px solid #f0884c;
 }
 .header__about-us {
     position: relative;
