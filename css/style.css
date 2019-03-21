@@ -212,7 +212,7 @@ body {
 }
 .about-project {
     background: #f3d2be;
-    height: 2200px;
+    height: 4300px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px;
@@ -220,15 +220,42 @@ body {
 }
 .about-project__title {
     font-weight: 300;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
-    margin: 0 auto;
+    margin: 20px auto;
     width: 900px;
+}
+.about-project__subtitle {
+    font-size: 25px;
 }
 .about-project__article {
     font-weight: 300;
     font-size: 18px;
     margin-top: 30px;
+    text-indent: 95px;
+    margin-bottom: 20px;
+    text-align: justify;
+    line-height: 1.2;
+}
+.about-project__table {
+    margin: 20px auto;
+}
+.about-project__table-caption {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.about-project__table-cell, .about-project__table-title {
+    border: 2px solid #1d172c;
+    padding: 5px;
+}
+.about-project__dependancies-img {
+    width: 700px;
+    height: auto;
+    margin: 30px auto;
+    display: block;
+}
+.about-project__dependancies-figcaption {
+    text-align: center;
 }
 .footer {
     font-size: 17px;

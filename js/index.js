@@ -67,4 +67,8 @@ function onLoaded() {
             } else return;
         }
       });
+    
+    // let preface = fetch("preface.json")
+    //     .then(response => response.json())
+    //     .then(data => console.log(data));
 }
