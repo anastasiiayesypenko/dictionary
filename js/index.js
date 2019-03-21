@@ -68,7 +68,8 @@ function onLoaded() {
         }
       });
     
-    // let preface = fetch("preface.json")
-    //     .then(response => response.json())
-    //     .then(data => console.log(data));
+    let preface = fetch("https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/js/preface.json")
+        .then(response => response.json())
+        .then(data => console.log(data));
+    
 }
