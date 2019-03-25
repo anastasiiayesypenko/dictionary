@@ -30,9 +30,9 @@
             <ul class="main-menu-list">
                 <li class="main-menu-list__title"><a href="#people" class="main-menu-list__link">Над проектом працювали</a></li>
                 <li class="main-menu-list__title"><a href="" class="main-menu-list__link">Авторський склад "АРСУН"</a></li>
-                <li class="main-menu-list__title"><a href="" class="main-menu-list__link">Передмова</a></li>
-                <li class="main-menu-list__title"><a href="" class="main-menu-list__link">Умовні позначення</a></li>
-                <li class="main-menu-list__title"><a href="" class="main-menu-list__link">Корпус словника</a></li>
+                <li class="main-menu-list__title"><a href="#preface" class="main-menu-list__link">Передмова</a></li>
+                <li class="main-menu-list__title"><a href="#abbreviation" class="main-menu-list__link">Умовні позначення</a></li>
+                <li class="main-menu-list__title"><a href="#example" class="main-menu-list__link">Корпус словника</a></li>
                 <li class="main-menu-list__title"><a href="#footer" class="main-menu-list__link">Посилання</a></li>
 
             </ul>
@@ -89,21 +89,21 @@
             <li>
                 <figure class="people-involved-section__figure">
                     <div class="people-involved-section__imagediv">
-                        <img class="people-involved-section__image" src="./img/Alina.jpg" alt="creator-img">
-                    </div>
-                    <figcaption class="people-involved-section__figcaption">
-                    Гарбіч Аліна
-                    </figcaption>
+                        <img src="./img/Dasha.jpg" alt="creator-img" class="people-involved-section__image">
+                    </div> 
+                        <figcaption class="people-involved-section__figcaption">
+                        Новікова Дар'я
+                        </figcaption>
                 </figure>
             </li>
             <li>
                 <figure class="people-involved-section__figure">
                     <div class="people-involved-section__imagediv">
-                        <img src="./img/1438094959-celeb_img_None.jpg" alt="creator-img" class="people-involved-section__image">
-                    </div> 
-                        <figcaption class="people-involved-section__figcaption">
-                        Новікова Дар'я
-                        </figcaption>
+                        <img class="people-involved-section__image" src="./img/Alina.jpg" alt="creator-img">
+                    </div>
+                    <figcaption class="people-involved-section__figcaption">
+                    Гарбіч Аліна
+                    </figcaption>
                 </figure>
             </li>
         </ul>
@@ -236,14 +236,75 @@
             </tr>
         </table>
     </section>
+    <section class="dictionary-bd">
+        <div class="dictionary-bd__table-wrapper" id="abbreviation">
+            <h2 class="dictionary-bd__table-title">Умовні позначення</h2>
+            <table class="dictionary-bd__table">
+                <tr>
+                    <th class="table-title">
+                        Номер
+                    </th>
+                    <th class="table-title">
+                        Абревіатура
+                    </th>
+                    <th class="table-title">
+                        Визначення
+                    </th>
+                </tr>
+                <table class="template-table-abbreviation"></table>
+            </table>
+        </div>
+        <div class="dictionary-bd__table-wrapper" id="preface">
+            <h2 class="dictionary-bd__table-title">Передмова</h2>
+            <table class="template-table-preface"></table>
+        </div>
+        <div class="dictionary-bd__table-wrapper" id="example">
+            <h2 class="dictionary-bd__table-title">Таблиця "Приклад-джерело"</h2>
+            <table class="dictionary-bd__table">
+                <tr>
+                    <th class="table-title">
+                        Номер
+                    </th>
+                    <th class="table-title">
+                        Контекст
+                    </th>
+                    <th class="table-title">
+                        Приклад
+                    </th>
+                </tr>
+                <table class="template-table-sourse"></table>
+            </table>
+        </div>
+    </section>
+    <template id="abbreviation-template">
+        <tr>
+            <td class="table-cell">{{ ID }}</td>
+            <td class="table-cell">{{ term }}</td>
+            <td class="table-cell">{{ definition }}</td>
+        </tr>
+    </template>
+    <template id="preface-template">
+        <tr>
+            <td class="table-cell">{{ ID }}</td>
+            <td class="table-cell">{{ name }}</td>
+            <td class="table-cell">{{ text }}</td>
+        </tr>
+    </template>
+    <template id="sourse-template">
+        <tr>
+            <td class="table-cell">{{ ID }}</td>
+            <td class="table-cell">{{ kontext }}</td>
+            <td class="table-cell">{{ pryklad }}</td>
+        </tr>
+    </template>
+   
     </main>
     <footer class="footer" id="footer">
         <p>Прикладна лінгвістика is love<br/>Іван Іванович, Василь Петрович, Кирило Кирилович</p>
         <p>Якісь там контакти, дизайнер Настенька Єсипенко, телефонуйте</p>
         <p>+38045645777</p>
     </footer>
-
-    <script src="./js/preface.json"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
     <script src="./js/index.js"></script>
 </body>
 </html>

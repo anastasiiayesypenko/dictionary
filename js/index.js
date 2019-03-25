@@ -3,6 +3,13 @@
 const leftButton = document.querySelector('.js-dictionary-pages-left');
 const rightButton = document.querySelector('.js-dictionary-pages-right');
 let dictionaryImage = document.querySelector('.dictionary-pages-image');
+const toTopLink = document.querySelector('.toTop-link');
+const abbreviationTemplate = document.querySelector('#abbreviation-template');
+const abbreviationTable = document.querySelector('.template-table-abbreviation');
+const prefaceTable = document.querySelector('.template-table-preface');
+const prefaceTemplate = document.querySelector('#preface-template');
+const sourseTable = document.querySelector('.template-table-sourse');
+const sourseTemplate = document.querySelector('#sourse-template');
 
 
 let dictionarySources = ['./img/page1.jpg', './img/page2.jpg', './img/page3.jpg', './img/page4.jpg', './img/page5.jpg', './img/page6.jpg', './img/page7.jpg'];
@@ -44,7 +51,6 @@ function onLoaded() {
     leftButton.addEventListener('click', onLeftClick);
     rightButton.addEventListener('click', onRightClick);
     
-    const toTopLink = document.querySelector('.toTop-link');
 
     toTopLink.addEventListener('click', function(event) {
         event.preventDefault();
@@ -68,8 +74,57 @@ function onLoaded() {
         }
       });
     
-    let preface = fetch("https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/js/preface.json")
-        .then(response => response.json())
-        .then(data => console.log(data));
+    let preface = fetch("https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/preface.json")
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(`Error while fetching: ${response.statusText}`)
+        })
+        .then(data => {
+            let source = prefaceTemplate.innerHTML.trim();
+            let func = Handlebars.compile(source);
+            let result = ''
+            for (let item of data) {
+                let markup = func(item);
+                result += markup;                
+            };
+            prefaceTable.innerHTML = result;
+        })
+        .catch(error => console.log(error));
+    
+    let abbreviations = fetch("https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/abbreviations.json")
+        .then(response => {
+            if (response.ok) return response.json();
+            throw new Error(`Error while fetching: ${response.statusText}`)
+        })
+        .then(data => {
+            let source = abbreviationTemplate.innerHTML.trim();
+            let func = Handlebars.compile(source);
+            let result = ''
+            for (let item of data) {
+                let markup = func(item);
+                result += markup;                
+            };
+            abbreviationTable.innerHTML = result;
+        })
+        .catch(error => console.log(error));
+    let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
+    .then(response => {
+        if (response.ok) return response.json();
+        throw new Error(`Error while fetching: ${response.statusText}`);
+    })
+    .then(data => {
+        let source = sourseTemplate.innerHTML.trim();
+        let func = Handlebars.compile(source);
+        let result = ''
+        for (let item of data) {
+            let markup = func(item);
+            result += markup;                
+        };
+        sourseTable.innerHTML = result;
+    })
+    .catch(error => console.log(error));
+
     
 }
