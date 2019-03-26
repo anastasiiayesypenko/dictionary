@@ -82,7 +82,6 @@ body {
     background: #f0884c;
     width: 270px;
     right: 0;
-    /* text-align: justify; */
 }
 .header__about-us-link {
     color: #473b68;
@@ -148,7 +147,6 @@ body {
     left: -40px;
 }
 .people-involved-section {
-    height: 800px;
     background: #1d172c;
     color: #fff;
 }
@@ -203,7 +201,6 @@ body {
 }
 .about-project {
     background: #f3d2be;
-    height: 4300px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px;
@@ -250,7 +247,6 @@ body {
 }
 .dictionary-bd {
     padding: 40px;
-    height: 37300px;
     background: #1d172c;
     color: #fff;
     font-weight: 300;
@@ -260,7 +256,6 @@ body {
     margin-bottom: 30px;
 }
 .dictionary-bd__table-wrapper {
-    border: 2px solid #fff;
     padding: 150px;
     padding-top: 90px;
     padding-bottom: 90px;
@@ -282,7 +277,6 @@ body {
     border-top: 5px solid #fff;
     font-size: 17px;
     font-family: 'Roboto';
-    height: 200px;
     padding: 20px;
     background: #1d172c;
     color: #fff;
