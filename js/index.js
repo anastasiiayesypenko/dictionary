@@ -10,7 +10,12 @@ const prefaceTable = document.querySelector('.template-table-preface');
 const prefaceTemplate = document.querySelector('#preface-template');
 const sourseTable = document.querySelector('.template-table-sourse');
 const sourseTemplate = document.querySelector('#sourse-template');
-
+let sixthZone;
+let seventhZone;
+let gramCodes;
+let indexWords;
+let lsvZones;
+let zone;
 
 let dictionarySources = ['./img/page1.jpg', './img/page2.jpg', './img/page3.jpg', './img/page4.jpg', './img/page5.jpg', './img/page6.jpg', './img/page7.jpg'];
 dictionaryImage.setAttribute('src', dictionarySources[0]);
