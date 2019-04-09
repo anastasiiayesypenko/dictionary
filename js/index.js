@@ -10,6 +10,15 @@ const prefaceTable = document.querySelector('.template-table-preface');
 const prefaceTemplate = document.querySelector('#preface-template');
 const sourseTable = document.querySelector('.template-table-sourse');
 const sourseTemplate = document.querySelector('#sourse-template');
+const sixthZoneTemplate = document.querySelector('#sixthZoneTemplate');
+const sixthZoneTable = document.querySelector('.template-table-sixZone');
+const seventhZoneTemplate = document.querySelector('#seventhZoneTemplate');
+const seventhZoneTable = document.querySelector('.template-table-seventhZone');
+const gramCodesTemplate = document.querySelector('#gramCodesTemplate');
+const gramCodesTable = document.querySelector('.template-table-gramCodes');
+const lsvZoneTemplate = document.querySelector('#lsvZoneTemplate');
+const lsvZoneTable = document.querySelector('.template-table-lsvZone');
+
 
 
 let dictionarySources = ['./img/page1.jpg', './img/page2.jpg', './img/page3.jpg', './img/page4.jpg', './img/page5.jpg', './img/page6.jpg', './img/page7.jpg'];
@@ -74,6 +83,8 @@ function onLoaded() {
         }
       });
     
+
+
     let preface = fetch("https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/preface.json")
         .then(response => {
             if (response.ok) {
@@ -84,7 +95,7 @@ function onLoaded() {
         .then(data => {
             let source = prefaceTemplate.innerHTML.trim();
             let func = Handlebars.compile(source);
-            let result = ''
+            let result = '';
             for (let item of data) {
                 let markup = func(item);
                 result += markup;                
@@ -93,6 +104,8 @@ function onLoaded() {
         })
         .catch(error => console.log(error));
     
+
+
     let abbreviations = fetch("https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/abbreviations.json")
         .then(response => {
             if (response.ok) return response.json();
@@ -101,14 +114,16 @@ function onLoaded() {
         .then(data => {
             let source = abbreviationTemplate.innerHTML.trim();
             let func = Handlebars.compile(source);
-            let result = ''
+            let result = '';
             for (let item of data) {
                 let markup = func(item);
                 result += markup;                
             };
-            abbreviationTable.innerHTML = result;
+            abbreviationTable.insertAdjacentHTML('beforeend', result);
         })
         .catch(error => console.log(error));
+
+
     let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
     .then(response => {
         if (response.ok) return response.json();
@@ -117,22 +132,88 @@ function onLoaded() {
     .then(data => {
         let source = sourseTemplate.innerHTML.trim();
         let func = Handlebars.compile(source);
-        let result = ''
+        let result = '';
         for (let item of data) {
             let markup = func(item);
             result += markup;                
         };
-        sourseTable.innerHTML = result;
+        sourseTable.insertAdjacentHTML('beforeend', result);
     })
     .catch(error => console.log(error));
-    let sixthZone = fetch('')
+
+
+
+    let sixthZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus6zone.json')
         .then(response => {
-            if (response.ok) return response;
+            if (response.ok) return response.json();
             throw new Error(response.statusText);
-        });
-    let seventhZone;
-    let gramCodes;
-    let indexWords;
-    let lsvZones;
-    let zone;     
+        })
+        .then(data => {
+            let source = sixthZoneTemplate.innerHTML.trim();
+            let func = Handlebars.compile(source);
+            let result = '';
+            for (let item of data) {
+                let markup = func(item);
+                result += markup;                
+            };
+            sixthZoneTable.insertAdjacentHTML('beforeend', result);
+        })
+        .catch(error => console.log(error));
+
+
+
+    let seventhZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus7zone.json')
+        .then(response => {
+            if (response.ok) return response.json();
+            throw new Error(response.statusText);
+        })
+        .then(data => {
+            let source = seventhZoneTemplate.innerHTML.trim();
+            let func = Handlebars.compile(source);
+            let result = '';
+            for (let item of data) {
+                let markup = func(item);
+                result += markup;                
+            };
+            seventhZoneTable.insertAdjacentHTML('beforeend', result);
+        })
+        .catch(error => console.log(error));
+
+
+
+    let gramCodes = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/gramCodes.json')
+        .then(response => {
+            if (response.ok) return response.json();
+            throw new Error(response.statusText);
+        })
+        .then(data => {
+            let source = gramCodesTemplate.innerHTML.trim();
+            let func = Handlebars.compile(source);
+            let result = '';
+            for (let item of data) {
+                let markup = func(item);
+                result += markup;                
+            };
+            gramCodesTable.insertAdjacentHTML('beforeend', result);
+        })
+        .catch(error => console.log(error));
+
+
+
+    let lsvZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/lsvZone.json')
+        .then(response => {
+            if (response.ok) return response.json();
+            throw new Error(response.statusText);
+        })
+        .then(data => {
+            let source = lsvZoneTemplate.innerHTML.trim();
+            let func = Handlebars.compile(source);
+            let result = '';
+            for (let item of data) {
+                let markup = func(item);
+                result += markup;                
+            };
+            lsvZoneTable.insertAdjacentHTML('beforeend', result);
+        })
+        .catch(error => console.log(error));
 }

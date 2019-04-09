@@ -40,7 +40,15 @@
             <ul class="main-menu-list">
                 <li class="main-menu-list__title"><a href="#people" class="main-menu-list__link">Над проектом працювали</a></li>                <li class="main-menu-list__title"><a href="#preface" class="main-menu-list__link">Передмова</a></li>
                 <li class="main-menu-list__title"><a href="#abbreviation" class="main-menu-list__link">Умовні позначення</a></li>
-                <li class="main-menu-list__title"><a href="./corpus.html" class="main-menu-list__link">Корпус словника</a></li>
+                <li class="main-menu-list__title corpus-link"><a href="#" class="main-menu-list__link">Корпус словника</a>
+                    <ul class="main-menu-list__submenu">
+                        <li class="main-menu-list__title"><a href="#lsvZone" class="main-menu-list__sublink">ЛСВ зони</a></li>
+                        <li class="main-menu-list__title"><a href="#gramCodes" class="main-menu-list__sublink">Граматичні коди</a></li>
+                        <li class="main-menu-list__title"><a href="#example" class="main-menu-list__sublink">Приклад-джерело</a></li>
+                        <li class="main-menu-list__title"><a href="#sixthZone" class="main-menu-list__sublink">Шоста зона</a></li>
+                        <li class="main-menu-list__title"><a href="#seventhZone" class="main-menu-list__sublink">Сьома зона</a></li>
+                    </ul>
+                </li>
                 <li class="main-menu-list__title"><a href="#footer" class="main-menu-list__link">Посилання</a></li>
             </ul>
         </nav>
@@ -237,7 +245,7 @@
     <section class="dictionary-bd">
         <div class="dictionary-bd__table-wrapper" id="abbreviation">
             <h2 class="dictionary-bd__table-title">Умовні позначення</h2>
-            <table class="dictionary-bd__table">
+            <table class="template-table-abbreviation">
                 <tr>
                     <th class="table-title">
                         Номер
@@ -249,16 +257,59 @@
                         Визначення
                     </th>
                 </tr>
-                <table class="template-table-abbreviation"></table>
             </table>
         </div>
         <div class="dictionary-bd__table-wrapper" id="preface">
             <h2 class="dictionary-bd__table-title">Передмова</h2>
             <table class="template-table-preface"></table>
         </div>
+        <div class="dictionary-bd__table-wrapper" id="lsvZone">
+            <h2 class="dictionary-bd__table-title">ЛСВ зони</h2>
+            <table class="template-table-lsvZone">
+                <tr>
+                    <th class="table-title">
+                        Номер
+                    </th>
+                    <th class="table-title">
+                        Зона 3
+                    </th>
+                    <th class="table-title">
+                        Зона 4
+                    </th>
+                    <th class="table-title">
+                        Зона 5
+                    </th>   
+                    <th class="table-title">
+                        Зона 6
+                    </th>
+                    <th class="table-title">
+                        Зона 7
+                    </th>               
+                </tr>
+            </table>
+        </div>
+        <div class="dictionary-bd__table-wrapper" id="gramCodes">
+            <h2 class="dictionary-bd__table-title">Граматичні коди</h2>
+            <table class="template-table-gramCodes">
+                <tr>
+                    <th class="table-title">
+                        Номер
+                    </th>
+                    <th class="table-title">
+                        Слово
+                    </th>
+                    <th class="table-title">
+                        Адреса
+                    </th>
+                    <th class="table-title">
+                        Код
+                    </th>                
+                </tr>
+            </table>
+        </div>
         <div class="dictionary-bd__table-wrapper" id="example">
             <h2 class="dictionary-bd__table-title">Таблиця "Приклад-джерело"</h2>
-            <table class="dictionary-bd__table">
+            <table class="template-table-sourse">
                 <tr>
                     <th class="table-title">
                         Номер
@@ -270,7 +321,50 @@
                         Приклад
                     </th>
                 </tr>
-                <table class="template-table-sourse"></table>
+            </table>
+        </div>
+        <div class="dictionary-bd__table-wrapper" id="sixthZone">
+            <h2 class="dictionary-bd__table-title">Шоста зона</h2>
+            <table class="template-table-sixZone">
+                <tr>
+                    <th class="table-title">
+                        Номер
+                    </th>
+                    <th class="table-title">
+                        Синоніми
+                    </th>
+                    <th class="table-title">
+                        Антоніми
+                    </th>
+                    <th class="table-title">
+                        Гіпоніми
+                    </th>
+                    <th class="table-title">
+                        Гіпероніми
+                    </th>
+                    <th class="table-title">
+                        Омоніми
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div class="dictionary-bd__table-wrapper" id="seventhZone">
+            <h2 class="dictionary-bd__table-title">Сьома зона</h2>
+            <table class="template-table-seventhZone">
+                <tr>
+                    <th class="table-title">
+                        Номер
+                    </th>
+                    <th class="table-title">
+                        Афікс
+                    </th>
+                    <th class="table-title">
+                        Складні слова
+                    </th>
+                    <th class="table-title">
+                        Гра
+                    </th>                
+                </tr>
             </table>
         </div>
     </section>
@@ -293,6 +387,42 @@
             <td class="table-cell">{{ ID }}</td>
             <td class="table-cell">{{ kontext }}</td>
             <td class="table-cell">{{ pryklad }}</td>
+        </tr>
+    </template>
+    <template id="sixthZoneTemplate">
+        <tr>
+            <td class="table-cell">{{ id }}</td>
+            <td class="table-cell">{{ СИНОНІМИ }}</td>
+            <td class="table-cell">{{ АНТОНІМИ }}</td>
+            <td class="table-cell">{{ ГІПОНІМИ }}</td>
+            <td class="table-cell">{{ ГІПЕРОНІМИ }}</td>
+            <td class="table-cell">{{ ОМОНІМИ }}</td>
+        </tr>
+    </template>
+    <template id="seventhZoneTemplate">
+        <tr>
+            <td class="table-cell">{{ id }}</td>
+            <td class="table-cell">{{ АФІКС }}</td>
+            <td class="table-cell">{{ СКЛАДСЛ }}</td>
+            <td class="table-cell">{{ ГРА }}</td>
+        </tr>
+    </template>
+    <template id="gramCodesTemplate">
+        <tr>
+            <td class="table-cell">{{ ID_slova }}</td>
+            <td class="table-cell">{{ slovо }}</td>
+            <td class="table-cell">{{ adresa }}</td>
+            <td class="table-cell">{{ kod }}</td>
+        </tr>
+    </template>
+    <template id="lsvZoneTemplate">
+        <tr>
+            <td class="table-cell">{{ id }}</td>
+            <td class="table-cell">{{ Зона_3_ЛСВ }}</td>
+            <td class="table-cell">{{ Зона_4_ЛСВ }}</td>
+            <td class="table-cell">{{ Зона_5_ЛСВ }}</td>
+            <td class="table-cell">{{ Зона_6_ЛСВ }}</td>
+            <td class="table-cell">{{ Зона_7_ЛСВ }}</td>
         </tr>
     </template>
    

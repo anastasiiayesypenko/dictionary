@@ -271,7 +271,8 @@ body {
         display: flex;
         justify-content: space-between;
         padding: 40px;
-        padding-left: 70px;
+        padding-right: 70px;
+        padding-left: 150px;
     }
     .header__title {
         font-size: 40px;
@@ -355,21 +356,52 @@ body {
         height: 50px;
     }
     .main-menu-list {
-        margin-top: 10px;
         margin-right: 50px;
     }
     .main-menu-list__link {
-        margin-top: 15px;
         width: 330px;
         height: 55px;
-        padding: 10px;
         padding-top: 15px;
+        padding-bottom: 35px;
+        padding-left: 10px;
         font-weight: 300;
+        color: #1d172c;
         font-size: 25px;
     }
+    .main-menu-list__submenu {
+        position: absolute;
+        left: 400px;
+        top: 350px;
+        font-size: 15px;
+        display: none;
+        z-index: 1000;
+        background: #e67433;
+        padding: 0;
+    }
+    .main-menu-list__sublink {
+        padding: 20px;
+        background: #f0884c;
+        display: block;
+        width: 200px;
+        font-size: 19px;
+        height: 58px;
+        font-weight: 300;
+        color: #1d172c;
+    }
+    .main-menu-list__sublink:hover {
+        background: #1d172c;
+        color: #e67433;
+    }
+    .corpus-link {
+        box-sizing: border-box;
+        border-bottom: 3px solid #e67433;
+    }
+    .corpus-link:hover .main-menu-list__submenu {
+        display: block;
+    }
     .dictionary-pages-image {
-        width: 350px;
-        height: 500px;
+        width: 330px;
+        height: 470px;
     }
     .js-dictionary-pages-right {
         right: -40px;
@@ -493,31 +525,44 @@ body {
     }
     .dictionary-bd {
         padding: 40px;
+        padding-top: 100px;
         background: #1d172c;
         color: #fff;
         font-weight: 300;
     }
     .dictionary-bd__table-title {
         font-size: 35px;
+        color: #1d172c;
         margin-bottom: 30px;
     }
     .dictionary-bd__table-wrapper {
-        padding: 150px;
-        padding-top: 90px;
+        padding: 130px;
+        padding-top: 40px;
         padding-bottom: 90px;
+        background: #f5e7de;
+        color: #1d172c;
+    }
+    .template-table-gramCodes {
+        padding: 10;
+        margin: 0;
+    }
+    .template-table-gramCodes .table-cell{
+        margin: 0;
+        max-width: 659px;
+        word-wrap: break-word;
     }
     .table-title {
         font-size: 23px;
         text-decoration: underline;
     }
     .table-cell {
-        border: 1px solid #fff;
+        border: 1px solid #1d172c;
     }
     .table-cell, .table-title {
         padding: 15px;
         min-width: 170px;
         text-align: left;
-        color: #fff;
+        color: #1d172c;
     }
     .footer {
         font-size: 17px;
