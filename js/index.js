@@ -124,60 +124,60 @@ function onLoaded() {
         .catch(error => console.log(error));
 
 
-    let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
-    .then(response => {
-        if (response.ok) return response.json();
-        throw new Error(`Error while fetching: ${response.statusText}`);
-    })
-    .then(data => {
-        let source = sourseTemplate.innerHTML.trim();
-        let func = Handlebars.compile(source);
-        let result = '';
-        for (let item of data) {
-            let markup = func(item);
-            result += markup;                
-        };
-        sourseTable.insertAdjacentHTML('beforeend', result);
-    })
-    .catch(error => console.log(error));
+    // let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
+    // .then(response => {
+    //     if (response.ok) return response.json();
+    //     throw new Error(`Error while fetching: ${response.statusText}`);
+    // })
+    // .then(data => {
+    //     let source = sourseTemplate.innerHTML.trim();
+    //     let func = Handlebars.compile(source);
+    //     let result = '';
+    //     for (let item of data) {
+    //         let markup = func(item);
+    //         result += markup;                
+    //     };
+    //     sourseTable.insertAdjacentHTML('beforeend', result);
+    // })
+    // .catch(error => console.log(error));
 
 
 
-    let sixthZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus6zone.json')
-        .then(response => {
-            if (response.ok) return response.json();
-            throw new Error(response.statusText);
-        })
-        .then(data => {
-            let source = sixthZoneTemplate.innerHTML.trim();
-            let func = Handlebars.compile(source);
-            let result = '';
-            for (let item of data) {
-                let markup = func(item);
-                result += markup;                
-            };
-            sixthZoneTable.insertAdjacentHTML('beforeend', result);
-        })
-        .catch(error => console.log(error));
+    // let sixthZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus6zone.json')
+    //     .then(response => {
+    //         if (response.ok) return response.json();
+    //         throw new Error(response.statusText);
+    //     })
+    //     .then(data => {
+    //         let source = sixthZoneTemplate.innerHTML.trim();
+    //         let func = Handlebars.compile(source);
+    //         let result = '';
+    //         for (let item of data) {
+    //             let markup = func(item);
+    //             result += markup;                
+    //         };
+    //         sixthZoneTable.insertAdjacentHTML('beforeend', result);
+    //     })
+    //     .catch(error => console.log(error));
 
 
 
-    let seventhZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus7zone.json')
-        .then(response => {
-            if (response.ok) return response.json();
-            throw new Error(response.statusText);
-        })
-        .then(data => {
-            let source = seventhZoneTemplate.innerHTML.trim();
-            let func = Handlebars.compile(source);
-            let result = '';
-            for (let item of data) {
-                let markup = func(item);
-                result += markup;                
-            };
-            seventhZoneTable.insertAdjacentHTML('beforeend', result);
-        })
-        .catch(error => console.log(error));
+    // let seventhZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus7zone.json')
+    //     .then(response => {
+    //         if (response.ok) return response.json();
+    //         throw new Error(response.statusText);
+    //     })
+    //     .then(data => {
+    //         let source = seventhZoneTemplate.innerHTML.trim();
+    //         let func = Handlebars.compile(source);
+    //         let result = '';
+    //         for (let item of data) {
+    //             let markup = func(item);
+    //             result += markup;                
+    //         };
+    //         seventhZoneTable.insertAdjacentHTML('beforeend', result);
+    //     })
+    //     .catch(error => console.log(error));
 
 
 
@@ -187,33 +187,64 @@ function onLoaded() {
             throw new Error(response.statusText);
         })
         .then(data => {
-            let source = gramCodesTemplate.innerHTML.trim();
-            let func = Handlebars.compile(source);
-            let result = '';
+            let result = ``;
             for (let item of data) {
-                let markup = func(item);
-                result += markup;                
+                
+                
+                
+                let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
+                .then(response => {
+                    if (response.ok) return response.json();
+                    throw new Error(`Error while fetching: ${response.statusText}`);
+                })
+                .then(inf => {
+                    let result = '';
+                    for (let i of inf) {
+                        if(item.ID === i.ID) {
+                            let markup = `<tr>
+                                <td class="table-cell">${item.id_head_slovospoluka}</td>
+                                <td class="table-cell">${i.id_head_slovospoluka}</td>
+                                <td class="table-cell">${item.ID_slova}</td>
+                                <td class="table-cell">${item.ID}</td>
+                                <td class="table-cell">${ item.slovо }</td>
+                                <td class="table-cell">
+                                <a href='${item.adresa}'>${item.kod}</a>
+                                </td>
+                                <td class="table-cell">${ i.ID }</td>
+                                <td class="table-cell">${ i.kontext }</td>
+                                <td class="table-cell">${i.pryklad}</td>
+                                </tr>`;
+                            result += markup; 
+                        }
+                                       
+                    };
+                    gramCodesTable.insertAdjacentHTML('beforeend', result);
+                })
+                .catch(error => console.log(error));
+
             };
             gramCodesTable.insertAdjacentHTML('beforeend', result);
+
+            
         })
         .catch(error => console.log(error));
 
 
 
-    let lsvZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/lsvZone.json')
-        .then(response => {
-            if (response.ok) return response.json();
-            throw new Error(response.statusText);
-        })
-        .then(data => {
-            let source = lsvZoneTemplate.innerHTML.trim();
-            let func = Handlebars.compile(source);
-            let result = '';
-            for (let item of data) {
-                let markup = func(item);
-                result += markup;                
-            };
-            lsvZoneTable.insertAdjacentHTML('beforeend', result);
-        })
-        .catch(error => console.log(error));
+    // let lsvZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/lsvZone.json')
+    //     .then(response => {
+    //         if (response.ok) return response.json();
+    //         throw new Error(response.statusText);
+    //     })
+    //     .then(data => {
+    //         let source = lsvZoneTemplate.innerHTML.trim();
+    //         let func = Handlebars.compile(source);
+    //         let result = '';
+    //         for (let item of data) {
+    //             let markup = func(item);
+    //             result += markup;                
+    //         };
+    //         lsvZoneTable.insertAdjacentHTML('beforeend', result);
+    //     })
+    //     .catch(error => console.log(error));
 }

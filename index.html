@@ -53,7 +53,7 @@
             </ul>
         </nav>
         <section class="dictionary-pages">
-            <img alt="сторінка словника" class="dictionary-pages-image">
+            <img alt="Електронний словник Арсун" class="dictionary-pages-image">
             <button class="dictionary-pages-button js-dictionary-pages-left">
                 <svg class="dictionary-pages__svg" width="50px" height="50px">
                     <use href="img/services-svg.svg#icon-circle-left"></use>
@@ -70,7 +70,7 @@
         <h2 class="people-involved-section__title">
             Над проектом працювали:
         </h2>
-        <p class="people-involved-section__paragraph">Навчальний керівник проекту: Зубань Оксана Миколаївна</p>
+        <p class="people-involved-section__paragraph">Науковий керівник проекту: Зубань Оксана Миколаївна</p>
         <ul class="people-involved-section__list">
             <li>
                 <figure class="people-involved-section__figure">
@@ -98,7 +98,7 @@
                         <img class="round people-involved-section__image" src="./img/Alina.jpg" alt="creator-img">
                     </div>
                     <figcaption class="people-involved-section__figcaption">
-                    Гарбіч Аліна
+                    Аліна Гарбіч
                     </figcaption>
                 </figure>
             </li>
@@ -108,7 +108,7 @@
                         <img src="./img/Dasha.jpg" alt="creator-img" class="round people-involved-section__image">
                     </div> 
                         <figcaption class="people-involved-section__figcaption">
-                        Новікова Дар'я
+                        Дар'я Новікова
                         </figcaption>
                 </figure>
             </li>
@@ -289,7 +289,7 @@
             </table>
         </div>
         <div class="dictionary-bd__table-wrapper" id="gramCodes">
-            <h2 class="dictionary-bd__table-title">Граматичні коди</h2>
+            <h2 class="dictionary-bd__table-title">Корпус словника</h2>
             <table class="template-table-gramCodes">
                 <tr>
                     <th class="table-title">
@@ -299,11 +299,14 @@
                         Слово
                     </th>
                     <th class="table-title">
-                        Адреса
+                        Парадигма відмінювання
+                    </th> 
+                    <th class="table-title">
+                        Контекст
                     </th>
                     <th class="table-title">
-                        Код
-                    </th>                
+                        Приклад
+                    </th>               
                 </tr>
             </table>
         </div>
@@ -382,13 +385,6 @@
             <td class="table-cell">{{ text }}</td>
         </tr>
     </template>
-    <template id="sourse-template">
-        <tr>
-            <td class="table-cell">{{ ID }}</td>
-            <td class="table-cell">{{ kontext }}</td>
-            <td class="table-cell">{{ pryklad }}</td>
-        </tr>
-    </template>
     <template id="sixthZoneTemplate">
         <tr>
             <td class="table-cell">{{ id }}</td>
@@ -411,8 +407,9 @@
         <tr>
             <td class="table-cell">{{ ID_slova }}</td>
             <td class="table-cell">{{ slovо }}</td>
-            <td class="table-cell">{{ adresa }}</td>
-            <td class="table-cell">{{ kod }}</td>
+            <td class="table-cell">
+            <a href=''>{{ kod }}</a>
+            </td>
         </tr>
     </template>
     <template id="lsvZoneTemplate">
