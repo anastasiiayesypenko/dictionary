@@ -5,6 +5,7 @@
     list-style: none;
     text-decoration: none;
     font-family: 'Roboto';
+    outline: 3px solid red;
 }
 body {
     background: #f5e7de;
@@ -240,6 +241,7 @@ body {
     }
     .about-project__table {
         margin: 0 auto;
+        overflow: hidden;
     }
     .about-project__table-caption {
         font-weight: bold;
@@ -567,5 +569,22 @@ body {
     .footer {
         font-size: 17px;
         padding: 40px;
+    }
+    .table-cell--info {
+        width: 700px;
+    }
+    .table__info-title {
+        font-weight: 900;
+        padding-left: 30px;
+        font-size: 20px;
+    }
+    .hidden {
+        display: none;
+    }
+    .main-word-button {
+        background: transparent;
+        border: none;
+        width: 230px;
+        height: 30px;
     }
 }
