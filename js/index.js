@@ -35,7 +35,6 @@ function onLoaded() {
         rightButton.disabled = false;
         currentSource = dictionaryImage.getAttribute('src');
         let indexOfImage = dictionarySources.indexOf(currentSource);
-        console.log(indexOfImage);
         dictionaryImage.removeAttribute('src');
         if (indexOfImage >= 2) {
             dictionaryImage.setAttribute('src', dictionarySources[indexOfImage-=1]) 
@@ -48,7 +47,6 @@ function onLoaded() {
         leftButton.disabled = false;
         currentSource = dictionaryImage.getAttribute('src');
         let indexOfImage = dictionarySources.indexOf(currentSource);
-        console.log(indexOfImage);
         dictionaryImage.removeAttribute('src');
         if (indexOfImage <= 4) {
             dictionaryImage.setAttribute('src', dictionarySources[indexOfImage+=1]);
@@ -130,21 +128,7 @@ function onLoaded() {
   
     // let seventhZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus7zone.json')
 
-    function findExample(buttonID) {
-        let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
-        .then(response => {
-            if (response.ok) return response.json();
-            throw new Error(response.statusText);
-        })
-        .then(example => {
-            let arr = example.some(id => {
-                Number(id.id_head_slovospoluka) === Number(buttonID);
-                console.log(id.id_head_slovospoluka);
-                console.log(buttonID);
-            });
-            console.log(arr);
-        })
-    };
+
 
 
     let gramCodes = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_arsun/master/bd/zone.json')
@@ -156,6 +140,8 @@ function onLoaded() {
             for (let item of data) {
                 let tr = document.createElement('tr');
                 let td = document.createElement('td');
+                td.classList.add('table-cell--info');
+                tr.classList.add('table__info-tr');
                 tr.classList.add('hidden');
                 td.classList.add('hidden');
 
@@ -173,13 +159,48 @@ function onLoaded() {
                     tr.classList.toggle('hidden');
                     td.classList.toggle('hidden');
                     let buttonID = event.target.dataset.id;
-                    findExample(event.target.dataset.id);
+
+                    function findExample(buttonID) {
+                        let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
+                        .then(response => {
+                            if (response.ok) return response.json();
+                            throw new Error(response.statusText);
+                        })
+                        .then(example => {
+                            let number = 0;
+                            let arr = example.filter(i => {
+                                if(Number(i.id_head_slovospoluka) === Number(buttonID)) {
+                                    number++;
+                                    let kontextLabel = document.createElement('p');
+                                    kontextLabel.textContent = i.kontext;
+                                    let exampleLabel = document.createElement('p');
+                                    exampleLabel.textContent = i.pryklad;
+                                    let sourseLabel = document.createElement('p');
+                                    sourseLabel.textContent = i.drzerelo;
+                                    let kontextTitle = document.createElement('h3');
+                                    kontextTitle.classList.add('table__info-title');
+                                    kontextTitle.textContent = number + ') Контекст вживання: ';
+                                    let exampleTitle = document.createElement('h3');
+                                    exampleTitle.classList.add('table__info-title');
+                                    exampleTitle.textContent = number + ") Приклад: ";
+                                    let sourseTitle = document.createElement('h3');
+                                    sourseTitle.classList.add('table__info-title');
+                                    sourseTitle.textContent = number + ") Джерело прикладу:";
+                                    td.append(kontextTitle, kontextLabel, exampleTitle, exampleLabel, sourseTitle, sourseLabel);
+                                }
+                            });
+                            tableRow.append(tr);
+                        })
+                        .catch(err => console.log(err));
+                    };
+
+
                     if (!(tr.classList.contains('hidden'))) {
 
+                        findExample(buttonID);
                         let lsvZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/lsvZone.json')
                         .then(response => {
                             if (response.ok) return response.json();
-                            console.log(response.json());
                             throw new Error(response.statusText);
                         })
                         .then(inf => {
@@ -188,19 +209,16 @@ function onLoaded() {
                             for (let id of inf) {
                                 lsvIDlist.push(id.id);
                             }
-                            let iList = inf.map(i => {
-                                console.log('id', i.id);
+                            let iList = inf.filter(i => {
 
                                 if (Number(i.id) === Number(buttonID)) {
                                     if (!(idList.includes(buttonID))) {
                                         idList.push(buttonID);
-                                        console.log('Number(buttonID) === Number(i.id), !(idList.includes(buttonID)');
                                         tr.innerHTML = '';
                                         td.innerHTML = '';
-                                        let paragraph = document.createElement('p');
-                                        paragraph.textContent = `${i.id}`;
-                                        paragraph.style.height = '40px';
-                                        td.classList.add('table-cell--info');
+                                        // let paragraph = document.createElement('p');
+                                        // paragraph.textContent = `${i.id}`;
+                                        // paragraph.style.height = '40px';
                                         let firstZoneTitle = document.createElement('h3');
                                         firstZoneTitle.classList.add('table__info-title');
                                         firstZoneTitle.textContent = `Перша зона:`;
@@ -246,89 +264,87 @@ function onLoaded() {
                                         seventhZoneParagraph.textContent = `${ item.Зона_7 }`;
                                         seventhZoneParagraph.classList.add('table__paragraph');
 
-                                        tr.classList.add('table__info-tr');
+
                                         let lsvThirdZoneTitle = document.createElement('h3');
                                         lsvThirdZoneTitle.classList.add('table__info-title');
-                                        lsvThirdZoneTitle.textContent = `Третя зона ЛСВ:`;
+                                        lsvThirdZoneTitle.textContent = `1) Третя зона ЛСВ:`;
                                         let lsvThirdZoneParagraph = document.createElement('p');
                                         lsvThirdZoneParagraph.textContent = `${ i.Зона_3_ЛСВ }`;
                                         lsvThirdZoneParagraph.classList.add('table__paragraph');
                                         let lsvFourthZoneTitle = document.createElement('h3');
                                         lsvFourthZoneTitle.classList.add('table__info-title');
-                                        lsvFourthZoneTitle.textContent = `Четверта зона ЛСВ:`;
+                                        lsvFourthZoneTitle.textContent = `1) Четверта зона ЛСВ:`;
                                         let lsvFourthZoneParagraph = document.createElement('p');
                                         lsvFourthZoneParagraph.textContent = `${ i.Зона_4_ЛСВ }`;
                                         lsvFourthZoneParagraph.classList.add('table__paragraph');
 
                                         let lsvfifthZoneTitle = document.createElement('h3');
                                         lsvfifthZoneTitle.classList.add('table__info-title');
-                                        lsvfifthZoneTitle.textContent = `П'ята зона ЛСВ:`;
+                                        lsvfifthZoneTitle.textContent = `1) П'ята зона ЛСВ:`;
                                         let lsvfifthZoneParagraph = document.createElement('p');
                                         lsvfifthZoneParagraph.textContent = `${ i.Зона_5_ЛСВ }`;
                                         lsvfifthZoneParagraph.classList.add('table__paragraph');
                                         let lsvsixthZoneTitle = document.createElement('h3');
                                         lsvsixthZoneTitle.classList.add('table__info-title');
-                                        lsvsixthZoneTitle.textContent = `Шоста зона ЛСВ:`;
+                                        lsvsixthZoneTitle.textContent = `1) Шоста зона ЛСВ:`;
                                         let lsvsixthZoneParagraph = document.createElement('p');
                                         lsvsixthZoneParagraph.textContent = `${ i.Зона_6_ЛСВ }`;
                                         lsvsixthZoneParagraph.classList.add('table__paragraph');
                                         let lsvseventhZoneTitle = document.createElement('h3');
                                         lsvseventhZoneTitle.classList.add('table__info-title');
-                                        lsvseventhZoneTitle.textContent = `Сьома зона ЛСВ:`;
+                                        lsvseventhZoneTitle.textContent = `1) Сьома зона ЛСВ:`;
                                         let lsvseventhZoneParagraph = document.createElement('p');
                                         lsvseventhZoneParagraph.textContent = `${ i.Зона_7_ЛСВ }`;
                                         lsvseventhZoneParagraph.classList.add('table__paragraph');
 
 
-
-                                        td.append(paragraph, firstZoneTitle, firstZoneParagraph, secondZoneTitle, secondZoneParagraph,
+                                        td.append(firstZoneTitle, firstZoneParagraph, secondZoneTitle, secondZoneParagraph,
                                             thirdZoneTitle, thirdZoneParagraph, fourthZoneTitle, fourthZoneParagraph, fifthZoneTitle, fifthZoneParagraph, 
-                                            sixthZoneTitle, sixthZoneParagraph, seventhZoneTitle, secondZoneParagraph);
-                                        tr.append(lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvsixthZoneTitle, lsvsixthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
-                                        tableRow.append(td, tr);
+                                            sixthZoneTitle, sixthZoneParagraph, seventhZoneTitle, seventhZoneParagraph, lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvsixthZoneTitle, lsvsixthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
+                                        
+                                        tableRow.append(td);
                                     } else {
-                                        console.log('Number(buttonID) === Number(i.id), idList.includes(buttonID)');
-                                        tr.classList.add('table__info-tr');
+                                        let num = 1;
+                                        num += 1;
+                                        
                                         let lsvThirdZoneTitle = document.createElement('h3');
                                         lsvThirdZoneTitle.classList.add('table__info-title');
-                                        lsvThirdZoneTitle.textContent = `Третя зона ЛСВ:`;
+                                        lsvThirdZoneTitle.textContent = num + `) Третя зона ЛСВ:`;
                                         let lsvThirdZoneParagraph = document.createElement('p');
                                         lsvThirdZoneParagraph.textContent = `${ i.Зона_3_ЛСВ }`;
                                         lsvThirdZoneParagraph.classList.add('table__paragraph');
                                         let lsvFourthZoneTitle = document.createElement('h3');
                                         lsvFourthZoneTitle.classList.add('table__info-title');
-                                        lsvFourthZoneTitle.textContent = `Четверта зона ЛСВ:`;
+                                        lsvFourthZoneTitle.textContent = num + `) Четверта зона ЛСВ:`;
                                         let lsvFourthZoneParagraph = document.createElement('p');
                                         lsvFourthZoneParagraph.textContent = `${ i.Зона_4_ЛСВ }`;
                                         lsvFourthZoneParagraph.classList.add('table__paragraph');
 
                                         let lsvfifthZoneTitle = document.createElement('h3');
                                         lsvfifthZoneTitle.classList.add('table__info-title');
-                                        lsvfifthZoneTitle.textContent = `П'ята зона ЛСВ:`;
+                                        lsvfifthZoneTitle.textContent =  num + `) П'ята зона ЛСВ:`;
                                         let lsvfifthZoneParagraph = document.createElement('p');
                                         lsvfifthZoneParagraph.textContent = `${ i.Зона_5_ЛСВ }`;
                                         lsvfifthZoneParagraph.classList.add('table__paragraph');
                                         let lsvsixthZoneTitle = document.createElement('h3');
                                         lsvsixthZoneTitle.classList.add('table__info-title');
-                                        lsvsixthZoneTitle.textContent = `Шоста зона ЛСВ:`;
+                                        lsvsixthZoneTitle.textContent = num + `) Шоста зона ЛСВ:`;
                                         let lsvsixthZoneParagraph = document.createElement('p');
                                         lsvsixthZoneParagraph.textContent = `${ i.Зона_6_ЛСВ }`;
                                         lsvsixthZoneParagraph.classList.add('table__paragraph');
                                         let lsvseventhZoneTitle = document.createElement('h3');
                                         lsvseventhZoneTitle.classList.add('table__info-title');
-                                        lsvseventhZoneTitle.textContent = `Сьома зона ЛСВ:`;
+                                        lsvseventhZoneTitle.textContent = num + `) Сьома зона ЛСВ:`;
                                         let lsvseventhZoneParagraph = document.createElement('p');
                                         lsvseventhZoneParagraph.textContent = `${ i.Зона_7_ЛСВ }`;
                                         lsvseventhZoneParagraph.classList.add('table__paragraph');
-                                        tr.append(lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvsixthZoneTitle, lsvsixthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
-                                        tableRow.append(td, tr);
+                                        td.append(lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvsixthZoneTitle, lsvsixthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
+                                        tableRow.append(td);
                                     }
                                 
                                 } else if (!(lsvIDlist.includes(Number(buttonID)))) {
-                                    console.log(lsvIDlist, Number(buttonID));
                                     td.classList.add('table-cell--info');
                                         td.innerHTML = '';
-                                        tr.innerHTML = '';
                                         let firstZoneTitle = document.createElement('h3');
                                         firstZoneTitle.classList.add('table__info-title');
                                         firstZoneTitle.textContent = `Перша зона:`;
@@ -378,14 +394,13 @@ function onLoaded() {
                                         let lsvAbsentText = document.createElement('h3');
                                         lsvAbsentText.classList.add('table__info-title');
                                         lsvAbsentText.textContent = `Інформація про ЛСВ відсутня`;
-                                        tr.append(lsvAbsentText);
 
 
 
                                         td.append(firstZoneTitle, firstZoneParagraph, secondZoneTitle, secondZoneParagraph,
                                             thirdZoneTitle, thirdZoneParagraph, fourthZoneTitle, fourthZoneParagraph, fifthZoneTitle, fifthZoneParagraph, 
-                                            sixthZoneTitle, sixthZoneParagraph, seventhZoneTitle, secondZoneParagraph);
-                                        tableRow.append(td, tr);
+                                            sixthZoneTitle, sixthZoneParagraph, seventhZoneTitle, seventhZoneParagraph, lsvAbsentText);
+                                        tableRow.append(td);
                                 }
                                 
                             });

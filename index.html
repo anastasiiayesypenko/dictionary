@@ -265,7 +265,7 @@
             <table class="template-table-preface"></table>
         </div>
         <div class="dictionary-bd__table-wrapper" id="lsvZone">
-            <h2 class="dictionary-bd__table-title">ЛСВ зони</h2>
+            <h2 class="dictionary-bd__table-title">Корпус словника</h2>
             <table class="template-table-lsvZone">
                 <tr>
                     <th class="table-title">
@@ -274,88 +274,8 @@
                 </tr>
             </table>
         </div>
-        <div class="dictionary-bd__table-wrapper" id="gramCodes">
-            <h2 class="dictionary-bd__table-title">Корпус словника</h2>
-            <table class="template-table-gramCodes">
-                <tr>
-                    <th class="table-title">
-                        Номер
-                    </th>
-                    <th class="table-title">
-                        Слово
-                    </th>
-                    <th class="table-title">
-                        Парадигма відмінювання
-                    </th> 
-                    <th class="table-title">
-                        Контекст
-                    </th>
-                    <th class="table-title">
-                        Приклад
-                    </th>               
-                </tr>
-            </table>
-        </div>
-        <div class="dictionary-bd__table-wrapper" id="example">
-            <h2 class="dictionary-bd__table-title">Таблиця "Приклад-джерело"</h2>
-            <table class="template-table-sourse">
-                <tr>
-                    <th class="table-title">
-                        Номер
-                    </th>
-                    <th class="table-title">
-                        Контекст
-                    </th>
-                    <th class="table-title">
-                        Приклад
-                    </th>
-                </tr>
-            </table>
-        </div>
-        <div class="dictionary-bd__table-wrapper" id="sixthZone">
-            <h2 class="dictionary-bd__table-title">Шоста зона</h2>
-            <table class="template-table-sixZone">
-                <tr>
-                    <th class="table-title">
-                        Номер
-                    </th>
-                    <th class="table-title">
-                        Синоніми
-                    </th>
-                    <th class="table-title">
-                        Антоніми
-                    </th>
-                    <th class="table-title">
-                        Гіпоніми
-                    </th>
-                    <th class="table-title">
-                        Гіпероніми
-                    </th>
-                    <th class="table-title">
-                        Омоніми
-                    </th>
-                </tr>
-            </table>
-        </div>
-        <div class="dictionary-bd__table-wrapper" id="seventhZone">
-            <h2 class="dictionary-bd__table-title">Сьома зона</h2>
-            <table class="template-table-seventhZone">
-                <tr>
-                    <th class="table-title">
-                        Номер
-                    </th>
-                    <th class="table-title">
-                        Афікс
-                    </th>
-                    <th class="table-title">
-                        Складні слова
-                    </th>
-                    <th class="table-title">
-                        Гра
-                    </th>                
-                </tr>
-            </table>
-        </div>
+    
+
     </section>
     <template id="abbreviation-template">
         <tr>
@@ -371,44 +291,7 @@
             <td class="table-cell">{{ text }}</td>
         </tr>
     </template>
-    <template id="sixthZoneTemplate">
-        <tr>
-            <td class="table-cell">{{ id }}</td>
-            <td class="table-cell">{{ СИНОНІМИ }}</td>
-            <td class="table-cell">{{ АНТОНІМИ }}</td>
-            <td class="table-cell">{{ ГІПОНІМИ }}</td>
-            <td class="table-cell">{{ ГІПЕРОНІМИ }}</td>
-            <td class="table-cell">{{ ОМОНІМИ }}</td>
-        </tr>
-    </template>
-    <template id="seventhZoneTemplate">
-        <tr>
-            <td class="table-cell">{{ id }}</td>
-            <td class="table-cell">{{ АФІКС }}</td>
-            <td class="table-cell">{{ СКЛАДСЛ }}</td>
-            <td class="table-cell">{{ ГРА }}</td>
-        </tr>
-    </template>
-    <template id="gramCodesTemplate">
-        <tr>
-            <td class="table-cell">{{ ID_slova }}</td>
-            <td class="table-cell">{{ slovо }}</td>
-            <td class="table-cell">
-            <a href=''>{{ kod }}</a>
-            </td>
-        </tr>
-    </template>
-    <template id="lsvZoneTemplate">
-        <tr>
-            <td class="table-cell">{{ id }}</td>
-            <td class="table-cell">{{ Зона_3_ЛСВ }}</td>
-            <td class="table-cell">{{ Зона_4_ЛСВ }}</td>
-            <td class="table-cell">{{ Зона_5_ЛСВ }}</td>
-            <td class="table-cell">{{ Зона_6_ЛСВ }}</td>
-            <td class="table-cell">{{ Зона_7_ЛСВ }}</td>
-        </tr>
-    </template>
-   
+    
     </main>
     <footer class="footer" id="footer">
         <p>Кафедра прикладної лінгвістики та української мови</p>
