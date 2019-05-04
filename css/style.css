@@ -5,7 +5,6 @@
     list-style: none;
     text-decoration: none;
     font-family: 'Roboto';
-    outline: 3px solid red;
 }
 body {
     background: #f5e7de;
@@ -578,13 +577,39 @@ body {
         padding-left: 30px;
         font-size: 20px;
     }
+    .table__paragraph {
+        padding: 20px;
+
+    }
     .hidden {
         display: none;
     }
     .main-word-button {
         background: transparent;
         border: none;
-        width: 230px;
-        height: 30px;
+        width: 270px;
+        height: 40px;
+    }
+    .dictionary-bd__table-wrapper {
+        position: relative;
+    }
+    .dictionary-bd__modal-window {
+        width: 300px;
+        top: 200px;
+        left: 800px;
+        position: fixed;
+        height: 110px;
+        background: #1d172c;
+        color: #e67433;
+        font-size: 20px;
+        padding: 15px;
+        text-align: center;
+    }
+    .dictionary-bd__modal-window::after {
+        content: "\21A9";
+        position: absolute;
+        top: 80px;
+        left: 30px;
+        display: inline-block;
     }
 }

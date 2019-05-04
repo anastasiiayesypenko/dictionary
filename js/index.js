@@ -81,6 +81,16 @@ function onLoaded() {
             } else return;
         }
       });
+    window.addEventListener('scroll', scrollModal); 
+    function scrollModal() {
+        let scrolledPage = window.pageYOffset || document.documentElement.scrollTop;
+        const bd = document.querySelector('.corpus');
+        const modalWindow = document.querySelector('.dictionary-bd__modal-window');
+        const td = document.querySelector('.td');
+        const bdTop = bd.getBoundingClientRect().top + window.pageYOffset;
+        let scrolled = scrolledPage;
+        scrolled + 150 > bdTop ? modalWindow.classList.remove('hidden') : modalWindow.classList.add('hidden');
+    }
     
 
 
@@ -124,14 +134,13 @@ function onLoaded() {
 
 
 
-    // let sixthZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus6zone.json')
   
     // let seventhZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus7zone.json')
 
 
 
 
-    let gramCodes = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_arsun/master/bd/zone.json')
+    let corpus = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_arsun/master/bd/zone.json')
         .then(response => {
             if (response.ok) return response.json();
             throw new Error(response.statusText);
@@ -141,6 +150,7 @@ function onLoaded() {
                 let tr = document.createElement('tr');
                 let td = document.createElement('td');
                 td.classList.add('table-cell--info');
+                td.classList.add('td');
                 tr.classList.add('table__info-tr');
                 tr.classList.add('hidden');
                 td.classList.add('hidden');
@@ -152,14 +162,14 @@ function onLoaded() {
                 buttonWord.classList.add('main-word-button');
                 buttonWord.textContent = `${item.id}. ${item.СЛОВО}`;
                 buttonWord.dataset.id = item.id;
-
-
-
+               
                 buttonWord.addEventListener('click', function(event) {
                     tr.classList.toggle('hidden');
                     td.classList.toggle('hidden');
+                    const modalWindow = document.querySelector('.dictionary-bd__modal-window');
+                    modalWindow.classList.add('hidden');
+                    window.removeEventListener('scroll', scrollModal);
                     let buttonID = event.target.dataset.id;
-
                     function findExample(buttonID) {
                         let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
                         .then(response => {
@@ -173,9 +183,12 @@ function onLoaded() {
                                     number++;
                                     let kontextLabel = document.createElement('p');
                                     kontextLabel.textContent = i.kontext;
+                                    kontextLabel.classList.add('table__paragraph');
                                     let exampleLabel = document.createElement('p');
+                                    exampleLabel.classList.add('table__paragraph');
                                     exampleLabel.textContent = i.pryklad;
                                     let sourseLabel = document.createElement('p');
+                                    sourseLabel.classList.add('table__paragraph');
                                     sourseLabel.textContent = i.drzerelo;
                                     let kontextTitle = document.createElement('h3');
                                     kontextTitle.classList.add('table__info-title');
@@ -189,15 +202,35 @@ function onLoaded() {
                                     td.append(kontextTitle, kontextLabel, exampleTitle, exampleLabel, sourseTitle, sourseLabel);
                                 }
                             });
-                            tableRow.append(tr);
                         })
                         .catch(err => console.log(err));
                     };
+                    
+                    
 
-
-                    if (!(tr.classList.contains('hidden'))) {
-
+                    if (!(td.classList.contains('hidden'))) {
                         findExample(buttonID);
+                        function findGramCode(buttonID) {
+                            let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/gramCodes.json')
+                            .then(response => {
+                                if (response.ok) return response.json();
+                                throw new Error(response.statusText);
+                            })
+                            .then(example => {
+                                let arr = example.filter(i => {
+                                    if(Number(i.ID_slova) === Number(buttonID)) {
+                                        let gramCodeLabel = document.createElement('a');
+                                        gramCodeLabel.textContent = 'Парадигма відмінювання за посиланням: ' + i.kod;
+                                        gramCodeLabel.classList.add('table__paragraph');
+                                        gramCodeLabel.setAttribute('href', `${i.adresa}`);
+                                        console.log(gramCodeLabel);
+                                        td.insertAdjacentHTML('beforeend', gramCodeLabel.innerHTML);
+                                    }
+                                });
+                            })
+                            .catch(err => console.log(err));
+                        };
+                        findGramCode(buttonID);
                         let lsvZone = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/lsvZone.json')
                         .then(response => {
                             if (response.ok) return response.json();
@@ -216,9 +249,6 @@ function onLoaded() {
                                         idList.push(buttonID);
                                         tr.innerHTML = '';
                                         td.innerHTML = '';
-                                        // let paragraph = document.createElement('p');
-                                        // paragraph.textContent = `${i.id}`;
-                                        // paragraph.style.height = '40px';
                                         let firstZoneTitle = document.createElement('h3');
                                         firstZoneTitle.classList.add('table__info-title');
                                         firstZoneTitle.textContent = `Перша зона:`;
@@ -254,9 +284,41 @@ function onLoaded() {
                                         let sixthZoneTitle = document.createElement('h3');
                                         sixthZoneTitle.classList.add('table__info-title');
                                         sixthZoneTitle.textContent = `Шоста зона:`;
-                                        let sixthZoneParagraph = document.createElement('p');
-                                        sixthZoneParagraph.textContent = `${ item.Зона_6 }`;
-                                        sixthZoneParagraph.classList.add('table__paragraph');
+                                        let sixthZoneParagraph = document.createElement('div');
+                                        let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus6zone.json')
+                                            .then(response => {
+                                                if (response.ok) return response.json();
+                                                throw new Error(response.statusText);
+                                            })
+                                            .then(example => {
+                                                let number = 0;
+                                                let arr = example.filter(i => {
+                                                    if(Number(i.id) === Number(buttonID)) {
+                                                        number++;
+                                                        let section = document.createElement('div');
+                                                        let synonymLabel = document.createElement('p');
+                                                        synonymLabel.classList.add('table__paragraph');
+                                                        synonymLabel.textContent = number + ')' + i.СИНОНІМИ;
+                                                        let antonymLabel = document.createElement('p');
+                                                        antonymLabel.classList.add('table__paragraph');
+                                                        antonymLabel.textContent = number + ')' + i.АНТОНІМИ;
+                                                        let hyponymLabel = document.createElement('p');
+                                                        hyponymLabel.classList.add('table__paragraph');
+                                                        hyponymLabel.textContent = number + ')' + i.ГІПОНІМИ;
+                                                        let hyperonymLabel = document.createElement('p');
+                                                        hyperonymLabel.classList.add('table__paragraph');
+                                                        hyperonymLabel.textContent = number + ')' + i.ГІПЕРОНІМИ;
+                                                        let omonymLabel = document.createElement('p');
+                                                        omonymLabel.classList.add('table__paragraph');
+                                                        omonymLabel.textContent = number + ')' + i.ОМОНІМИ;
+                                                        section.append(synonymLabel,antonymLabel, hyponymLabel, hyperonymLabel, omonymLabel);
+                                                        sixthZoneParagraph.append(section);
+                                                    }
+                                                    
+                                                });
+                                            })
+                                            .catch(err => console.log(err));
+                                        
                                         let seventhZoneTitle = document.createElement('h3');
                                         seventhZoneTitle.classList.add('table__info-title');
                                         seventhZoneTitle.textContent = `Сьома зона:`;
@@ -284,12 +346,6 @@ function onLoaded() {
                                         let lsvfifthZoneParagraph = document.createElement('p');
                                         lsvfifthZoneParagraph.textContent = `${ i.Зона_5_ЛСВ }`;
                                         lsvfifthZoneParagraph.classList.add('table__paragraph');
-                                        let lsvsixthZoneTitle = document.createElement('h3');
-                                        lsvsixthZoneTitle.classList.add('table__info-title');
-                                        lsvsixthZoneTitle.textContent = `1) Шоста зона ЛСВ:`;
-                                        let lsvsixthZoneParagraph = document.createElement('p');
-                                        lsvsixthZoneParagraph.textContent = `${ i.Зона_6_ЛСВ }`;
-                                        lsvsixthZoneParagraph.classList.add('table__paragraph');
                                         let lsvseventhZoneTitle = document.createElement('h3');
                                         lsvseventhZoneTitle.classList.add('table__info-title');
                                         lsvseventhZoneTitle.textContent = `1) Сьома зона ЛСВ:`;
@@ -300,7 +356,7 @@ function onLoaded() {
 
                                         td.append(firstZoneTitle, firstZoneParagraph, secondZoneTitle, secondZoneParagraph,
                                             thirdZoneTitle, thirdZoneParagraph, fourthZoneTitle, fourthZoneParagraph, fifthZoneTitle, fifthZoneParagraph, 
-                                            sixthZoneTitle, sixthZoneParagraph, seventhZoneTitle, seventhZoneParagraph, lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvsixthZoneTitle, lsvsixthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
+                                            sixthZoneTitle, sixthZoneParagraph, seventhZoneTitle, seventhZoneParagraph, lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
                                         
                                         tableRow.append(td);
                                     } else {
@@ -326,35 +382,29 @@ function onLoaded() {
                                         let lsvfifthZoneParagraph = document.createElement('p');
                                         lsvfifthZoneParagraph.textContent = `${ i.Зона_5_ЛСВ }`;
                                         lsvfifthZoneParagraph.classList.add('table__paragraph');
-                                        let lsvsixthZoneTitle = document.createElement('h3');
-                                        lsvsixthZoneTitle.classList.add('table__info-title');
-                                        lsvsixthZoneTitle.textContent = num + `) Шоста зона ЛСВ:`;
-                                        let lsvsixthZoneParagraph = document.createElement('p');
-                                        lsvsixthZoneParagraph.textContent = `${ i.Зона_6_ЛСВ }`;
-                                        lsvsixthZoneParagraph.classList.add('table__paragraph');
                                         let lsvseventhZoneTitle = document.createElement('h3');
                                         lsvseventhZoneTitle.classList.add('table__info-title');
                                         lsvseventhZoneTitle.textContent = num + `) Сьома зона ЛСВ:`;
                                         let lsvseventhZoneParagraph = document.createElement('p');
                                         lsvseventhZoneParagraph.textContent = `${ i.Зона_7_ЛСВ }`;
                                         lsvseventhZoneParagraph.classList.add('table__paragraph');
-                                        td.append(lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvsixthZoneTitle, lsvsixthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
+                                        td.append(lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
                                         tableRow.append(td);
                                     }
                                 
                                 } else if (!(lsvIDlist.includes(Number(buttonID)))) {
-                                    td.classList.add('table-cell--info');
-                                        td.innerHTML = '';
-                                        let firstZoneTitle = document.createElement('h3');
+                                    
+                                    td.innerHTML = '';
+                                    let firstZoneTitle = document.createElement('h3');
                                         firstZoneTitle.classList.add('table__info-title');
                                         firstZoneTitle.textContent = `Перша зона:`;
-                                        let firstZoneParagraph = document.createElement('p');
+                                    let firstZoneParagraph = document.createElement('p');
                                         firstZoneParagraph.textContent = `${ item.Зона_1 }`;
                                         firstZoneParagraph.classList.add('table__paragraph');
-                                        let secondZoneTitle = document.createElement('h3');
+                                    let secondZoneTitle = document.createElement('h3');
                                         secondZoneTitle.classList.add('table__info-title');
                                         secondZoneTitle.textContent = `Друга зона:`;
-                                        let secondZoneParagraph = document.createElement('p');
+                                    let secondZoneParagraph = document.createElement('p');
                                         secondZoneParagraph.textContent = `${ item.Зона_2 }`;
                                         secondZoneParagraph.classList.add('table__paragraph');
 
@@ -380,9 +430,42 @@ function onLoaded() {
                                         let sixthZoneTitle = document.createElement('h3');
                                         sixthZoneTitle.classList.add('table__info-title');
                                         sixthZoneTitle.textContent = `Шоста зона:`;
-                                        let sixthZoneParagraph = document.createElement('p');
-                                        sixthZoneParagraph.textContent = `${ item.Зона_6 }`;
-                                        sixthZoneParagraph.classList.add('table__paragraph');
+                                        let sixthZoneParagraph = document.createElement('div');
+                                        let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus6zone.json')
+                                            .then(response => {
+                                                if (response.ok) return response.json();
+                                                throw new Error(response.statusText);
+                                            })
+                                            .then(example => {
+                                                let number = 0;
+                                                let arr = example.filter(i => {
+                                                    if(Number(i.id) === Number(buttonID)) {
+                                                        number++;
+                                                        let section = document.createElement('div');
+                                                        let synonymLabel = document.createElement('p');
+                                                        synonymLabel.textContent = number + ')' + i.СИНОНІМИ;
+                                                        synonymLabel.classList.add('table__paragraph');
+                                                        let antonymLabel = document.createElement('p');
+                                                        antonymLabel.textContent = number + ')' + i.АНТОНІМИ;
+                                                        antonymLabel.classList.add('table__paragraph');
+                                                        let hyponymLabel = document.createElement('p');
+                                                        hyponymLabel.classList.add('table__paragraph');
+                                                        hyponymLabel.textContent = number + ')' + i.ГІПОНІМИ;
+                                                        let hyperonymLabel = document.createElement('p');
+                                                        hyperonymLabel.classList.add('table__paragraph');
+                                                        hyperonymLabel.textContent = number + ')' + i.ГІПЕРОНІМИ;
+                                                        let omonymLabel = document.createElement('p');
+                                                        omonymLabel.classList.add('table__paragraph');
+                                                        omonymLabel.textContent = number + ')' + i.ОМОНІМИ;
+                                                        section.append(synonymLabel,antonymLabel, hyponymLabel, hyperonymLabel, omonymLabel);
+                                                        sixthZoneParagraph.append(section);
+                                                    }
+                                                    
+                                                });
+                                            })
+                                            .catch(err => console.log(err));
+                                        
+
                                         let seventhZoneTitle = document.createElement('h3');
                                         seventhZoneTitle.classList.add('table__info-title');
                                         seventhZoneTitle.textContent = `Сьома зона:`;
@@ -390,7 +473,7 @@ function onLoaded() {
                                         seventhZoneParagraph.textContent = `${ item.Зона_7 }`;
                                         seventhZoneParagraph.classList.add('table__paragraph');
                                         
-                                        tr.classList.add('table__info-tr');
+                                        
                                         let lsvAbsentText = document.createElement('h3');
                                         lsvAbsentText.classList.add('table__info-title');
                                         lsvAbsentText.textContent = `Інформація про ЛСВ відсутня`;
@@ -402,13 +485,12 @@ function onLoaded() {
                                             sixthZoneTitle, sixthZoneParagraph, seventhZoneTitle, seventhZoneParagraph, lsvAbsentText);
                                         tableRow.append(td);
                                 }
-                                
-                            });
+                            }); 
                     })
                     .catch(error => console.log(error));
-                    }
-                    
-                    });
+                    }            
+                });
+                
                 tableRowMainWord.appendChild(buttonWord);
                 tableRow.appendChild(tableRowMainWord);
                 lsvZoneTable.appendChild(tableRow);

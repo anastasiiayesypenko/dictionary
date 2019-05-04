@@ -41,15 +41,7 @@
             <ul class="main-menu-list">
                 <li class="main-menu-list__title"><a href="#people" class="main-menu-list__link">Над проектом працювали</a></li>                <li class="main-menu-list__title"><a href="#preface" class="main-menu-list__link">Передмова</a></li>
                 <li class="main-menu-list__title"><a href="#abbreviation" class="main-menu-list__link">Умовні позначення</a></li>
-                <li class="main-menu-list__title corpus-link"><a href="#" class="main-menu-list__link">Корпус словника</a>
-                    <ul class="main-menu-list__submenu">
-                        <li class="main-menu-list__title"><a href="#lsvZone" class="main-menu-list__sublink">ЛСВ зони</a></li>
-                        <li class="main-menu-list__title"><a href="#gramCodes" class="main-menu-list__sublink">Граматичні коди</a></li>
-                        <li class="main-menu-list__title"><a href="#example" class="main-menu-list__sublink">Приклад-джерело</a></li>
-                        <li class="main-menu-list__title"><a href="#sixthZone" class="main-menu-list__sublink">Шоста зона</a></li>
-                        <li class="main-menu-list__title"><a href="#seventhZone" class="main-menu-list__sublink">Сьома зона</a></li>
-                    </ul>
-                </li>
+                <li class="main-menu-list__title corpus-link"><a href="#corpus" class="main-menu-list__link">Корпус словника</a></li>
                 <li class="main-menu-list__title"><a href="#footer" class="main-menu-list__link">Посилання</a></li>
             </ul>
         </nav>
@@ -264,7 +256,10 @@
             <h2 class="dictionary-bd__table-title">Передмова</h2>
             <table class="template-table-preface"></table>
         </div>
-        <div class="dictionary-bd__table-wrapper" id="lsvZone">
+        <div class="dictionary-bd__table-wrapper corpus" id="corpus">
+            <div class="dictionary-bd__modal-window hidden">
+                <p class="dictionary-bd__modal-window-text">Щоб переглянути інформацію, натисніть на слово, (щоб закрити - натисніть ще раз)</p>
+            </div>
             <h2 class="dictionary-bd__table-title">Корпус словника</h2>
             <table class="template-table-lsvZone">
                 <tr>
@@ -286,7 +281,6 @@
     </template>
     <template id="preface-template">
         <tr>
-            <td class="table-cell">{{ ID }}</td>
             <td class="table-cell">{{ name }}</td>
             <td class="table-cell">{{ text }}</td>
         </tr>
