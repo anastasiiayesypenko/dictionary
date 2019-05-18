@@ -574,8 +574,16 @@ body {
     }
     .table__info-title {
         font-weight: 900;
-        padding-left: 30px;
-        font-size: 20px;
+        padding: 30px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-size: 15px;
+        border: none;
+        border-bottom: 1px solid #1d172c;
+        width: 400px;
+        text-align: left;
+        background: transparent;
+        display: block;
     }
     .table__paragraph {
         padding: 20px;
