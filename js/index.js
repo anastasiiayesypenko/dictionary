@@ -251,39 +251,39 @@ function onLoaded() {
                                         td.innerHTML = '';
                                         let firstZoneTitle = document.createElement('h3');
                                         firstZoneTitle.classList.add('table__info-title');
-                                        firstZoneTitle.textContent = `Перша зона:`;
+                                        firstZoneTitle.textContent = `Реєстрова одиниця:`;
                                         let firstZoneParagraph = document.createElement('p');
                                         firstZoneParagraph.textContent = `${ item.Зона_1 }`;
                                         firstZoneParagraph.classList.add('table__paragraph');
                                         let secondZoneTitle = document.createElement('h3');
                                         secondZoneTitle.classList.add('table__info-title');
-                                        secondZoneTitle.textContent = `Друга зона:`;
+                                        secondZoneTitle.textContent = `Граматична інформація (грам):`;
                                         let secondZoneParagraph = document.createElement('p');
                                         secondZoneParagraph.textContent = `${ item.Зона_2 }`;
                                         secondZoneParagraph.classList.add('table__paragraph');
 
                                         let thirdZoneTitle = document.createElement('h3');
                                         thirdZoneTitle.classList.add('table__info-title');
-                                        thirdZoneTitle.textContent = `Третя зона:`;
+                                        thirdZoneTitle.textContent = `Дефініція нова:`;
                                         let thirdZoneParagraph = document.createElement('p');
                                         thirdZoneParagraph.textContent = `${ item.Зона_3 }`;
                                         thirdZoneParagraph.classList.add('table__paragraph');
                                         let fourthZoneTitle = document.createElement('h3');
                                         fourthZoneTitle.classList.add('table__info-title');
-                                        fourthZoneTitle.textContent = `Четверта зона:`;
+                                        fourthZoneTitle.textContent = `Дефініція стара:`;
                                         let fourthZoneParagraph = document.createElement('p');
                                         fourthZoneParagraph.textContent = `${ item.Зона_4 }`;
                                         fourthZoneParagraph.classList.add('table__paragraph');
 
                                         let fifthZoneTitle = document.createElement('h3');
                                         fifthZoneTitle.classList.add('table__info-title');
-                                        fifthZoneTitle.textContent = `П'ята зона:`;
+                                        fifthZoneTitle.textContent = `Синтагматичні відношення реєстрової одиниці:`;
                                         let fifthZoneParagraph = document.createElement('p');
                                         fifthZoneParagraph.textContent = `${ item.Зона_5 }`;
                                         fifthZoneParagraph.classList.add('table__paragraph');
                                         let sixthZoneTitle = document.createElement('h3');
                                         sixthZoneTitle.classList.add('table__info-title');
-                                        sixthZoneTitle.textContent = `Шоста зона:`;
+                                        sixthZoneTitle.textContent = `Парадигматичні відношення реєстрової одиниці:`;
                                         let sixthZoneParagraph = document.createElement('div');
                                         let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus6zone.json')
                                             .then(response => {
@@ -321,7 +321,7 @@ function onLoaded() {
                                         
                                         let seventhZoneTitle = document.createElement('h3');
                                         seventhZoneTitle.classList.add('table__info-title');
-                                        seventhZoneTitle.textContent = `Сьома зона:`;
+                                        seventhZoneTitle.textContent = `Епідигматичні (дериваційні) відношення реєстрової одиниці:`;
                                         let seventhZoneParagraph = document.createElement('p');
                                         seventhZoneParagraph.textContent = `${ item.Зона_7 }`;
                                         seventhZoneParagraph.classList.add('table__paragraph');
@@ -329,26 +329,26 @@ function onLoaded() {
 
                                         let lsvThirdZoneTitle = document.createElement('h3');
                                         lsvThirdZoneTitle.classList.add('table__info-title');
-                                        lsvThirdZoneTitle.textContent = `1) Третя зона ЛСВ:`;
+                                        lsvThirdZoneTitle.textContent = `1) Дефініція нова ЛСВ:`;
                                         let lsvThirdZoneParagraph = document.createElement('p');
                                         lsvThirdZoneParagraph.textContent = `${ i.Зона_3_ЛСВ }`;
                                         lsvThirdZoneParagraph.classList.add('table__paragraph');
                                         let lsvFourthZoneTitle = document.createElement('h3');
                                         lsvFourthZoneTitle.classList.add('table__info-title');
-                                        lsvFourthZoneTitle.textContent = `1) Четверта зона ЛСВ:`;
+                                        lsvFourthZoneTitle.textContent = `1) Дефініція стара ЛСВ:`;
                                         let lsvFourthZoneParagraph = document.createElement('p');
                                         lsvFourthZoneParagraph.textContent = `${ i.Зона_4_ЛСВ }`;
                                         lsvFourthZoneParagraph.classList.add('table__paragraph');
 
                                         let lsvfifthZoneTitle = document.createElement('h3');
                                         lsvfifthZoneTitle.classList.add('table__info-title');
-                                        lsvfifthZoneTitle.textContent = `1) П'ята зона ЛСВ:`;
+                                        lsvfifthZoneTitle.textContent = `1) Синтагматичні відношення реєстрової одиниці ЛСВ:`;
                                         let lsvfifthZoneParagraph = document.createElement('p');
                                         lsvfifthZoneParagraph.textContent = `${ i.Зона_5_ЛСВ }`;
                                         lsvfifthZoneParagraph.classList.add('table__paragraph');
                                         let lsvseventhZoneTitle = document.createElement('h3');
                                         lsvseventhZoneTitle.classList.add('table__info-title');
-                                        lsvseventhZoneTitle.textContent = `1) Сьома зона ЛСВ:`;
+                                        lsvseventhZoneTitle.textContent = `1) Епідигматичні (дериваційні) відношення реєстрової одиниці ЛСВ:`;
                                         let lsvseventhZoneParagraph = document.createElement('p');
                                         lsvseventhZoneParagraph.textContent = `${ i.Зона_7_ЛСВ }`;
                                         lsvseventhZoneParagraph.classList.add('table__paragraph');
@@ -365,26 +365,26 @@ function onLoaded() {
                                         
                                         let lsvThirdZoneTitle = document.createElement('h3');
                                         lsvThirdZoneTitle.classList.add('table__info-title');
-                                        lsvThirdZoneTitle.textContent = num + `) Третя зона ЛСВ:`;
+                                        lsvThirdZoneTitle.textContent = num + `) Дефініція нова ЛСВ:`;
                                         let lsvThirdZoneParagraph = document.createElement('p');
                                         lsvThirdZoneParagraph.textContent = `${ i.Зона_3_ЛСВ }`;
                                         lsvThirdZoneParagraph.classList.add('table__paragraph');
                                         let lsvFourthZoneTitle = document.createElement('h3');
                                         lsvFourthZoneTitle.classList.add('table__info-title');
-                                        lsvFourthZoneTitle.textContent = num + `) Четверта зона ЛСВ:`;
+                                        lsvFourthZoneTitle.textContent = num + `) Дефініція стара ЛСВ:`;
                                         let lsvFourthZoneParagraph = document.createElement('p');
                                         lsvFourthZoneParagraph.textContent = `${ i.Зона_4_ЛСВ }`;
                                         lsvFourthZoneParagraph.classList.add('table__paragraph');
 
                                         let lsvfifthZoneTitle = document.createElement('h3');
                                         lsvfifthZoneTitle.classList.add('table__info-title');
-                                        lsvfifthZoneTitle.textContent =  num + `) П'ята зона ЛСВ:`;
+                                        lsvfifthZoneTitle.textContent =  num + `) Синтагматичні відношення реєстрової одиниці ЛСВ:`;
                                         let lsvfifthZoneParagraph = document.createElement('p');
                                         lsvfifthZoneParagraph.textContent = `${ i.Зона_5_ЛСВ }`;
                                         lsvfifthZoneParagraph.classList.add('table__paragraph');
                                         let lsvseventhZoneTitle = document.createElement('h3');
                                         lsvseventhZoneTitle.classList.add('table__info-title');
-                                        lsvseventhZoneTitle.textContent = num + `) Сьома зона ЛСВ:`;
+                                        lsvseventhZoneTitle.textContent = num + `) Епідигматичні (дериваційні) відношення реєстрової одиниці ЛСВ:`;
                                         let lsvseventhZoneParagraph = document.createElement('p');
                                         lsvseventhZoneParagraph.textContent = `${ i.Зона_7_ЛСВ }`;
                                         lsvseventhZoneParagraph.classList.add('table__paragraph');
@@ -397,13 +397,13 @@ function onLoaded() {
                                     td.innerHTML = '';
                                     let firstZoneTitle = document.createElement('h3');
                                         firstZoneTitle.classList.add('table__info-title');
-                                        firstZoneTitle.textContent = `Перша зона:`;
+                                        firstZoneTitle.textContent = `Реєстрова одиниця:`;
                                     let firstZoneParagraph = document.createElement('p');
                                         firstZoneParagraph.textContent = `${ item.Зона_1 }`;
                                         firstZoneParagraph.classList.add('table__paragraph');
                                     let secondZoneTitle = document.createElement('h3');
                                         secondZoneTitle.classList.add('table__info-title');
-                                        secondZoneTitle.textContent = `Друга зона:`;
+                                        secondZoneTitle.textContent = `Граматична інформація (грам):`;
                                     let secondZoneParagraph = document.createElement('p');
                                         secondZoneParagraph.textContent = `${ item.Зона_2 }`;
                                         secondZoneParagraph.classList.add('table__paragraph');
@@ -416,20 +416,20 @@ function onLoaded() {
                                         thirdZoneParagraph.classList.add('table__paragraph');
                                         let fourthZoneTitle = document.createElement('h3');
                                         fourthZoneTitle.classList.add('table__info-title');
-                                        fourthZoneTitle.textContent = `Четверта зона:`;
+                                        fourthZoneTitle.textContent = `Дефініція стара:`;
                                         let fourthZoneParagraph = document.createElement('p');
                                         fourthZoneParagraph.textContent = `${ item.Зона_4 }`;
                                         fourthZoneParagraph.classList.add('table__paragraph');
 
                                         let fifthZoneTitle = document.createElement('h3');
                                         fifthZoneTitle.classList.add('table__info-title');
-                                        fifthZoneTitle.textContent = `П'ята зона:`;
+                                        fifthZoneTitle.textContent = `Синтагматичні відношення реєстрової одиниці:`;
                                         let fifthZoneParagraph = document.createElement('p');
                                         fifthZoneParagraph.textContent = `${ item.Зона_5 }`;
                                         fifthZoneParagraph.classList.add('table__paragraph');
                                         let sixthZoneTitle = document.createElement('h3');
                                         sixthZoneTitle.classList.add('table__info-title');
-                                        sixthZoneTitle.textContent = `Шоста зона:`;
+                                        sixthZoneTitle.textContent = `Парадигматичні відношення реєстрової одиниці:`;
                                         let sixthZoneParagraph = document.createElement('div');
                                         let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/corpus6zone.json')
                                             .then(response => {
@@ -468,7 +468,7 @@ function onLoaded() {
 
                                         let seventhZoneTitle = document.createElement('h3');
                                         seventhZoneTitle.classList.add('table__info-title');
-                                        seventhZoneTitle.textContent = `Сьома зона:`;
+                                        seventhZoneTitle.textContent = `Епідигматичні (дериваційні) відношення реєстрової одиниці:`;
                                         let seventhZoneParagraph = document.createElement('p');
                                         seventhZoneParagraph.textContent = `${ item.Зона_7 }`;
                                         seventhZoneParagraph.classList.add('table__paragraph');
