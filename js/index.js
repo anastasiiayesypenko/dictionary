@@ -561,10 +561,11 @@ function onLoaded() {
                     wordCombTable.append(buttonWord, td);
 
                     buttonWord.addEventListener('click', function (event) {
-                        event.target.classList.add('target');
 
-                        function findExample(buttonID) {
+
+                        function findExample(event, buttonID) {
                             td.classList.toggle('hidden');
+                            event.target.classList.add('target');
                             let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_appling/master/bd/exampleSourse.json')
                                 .then(response => {
                                     if (response.ok) return response.json();
@@ -608,7 +609,7 @@ function onLoaded() {
                                 .catch(err => console.log(err));
                         };
                         if (td.textContent.length === 0) {
-                            findExample(buttonWord.dataset.id);
+                            findExample(event, buttonWord.dataset.id);
                         } else {
                             td.classList.toggle('hidden');
                             event.target.classList.toggle('target');
