@@ -11,9 +11,6 @@ body {
     background: #f5e7de;
 }
 
-.header {
-    background: #1d172c;
-}
 
 .toTop-link {
     display: inline-block;
@@ -782,7 +779,7 @@ body {
 
     .wide {
         max-width: 1000px;
-        margin-left: 50px;
+        margin-left: 30px;
         margin-top: 5px;
     }
 

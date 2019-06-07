@@ -256,7 +256,6 @@ function onLoaded() {
                                                     })
                                                     .then(example => {
                                                         let arr = example.filter(iii => {
-                                                            console.log(iii.ID_slova, i.id, 'zalupa');
                                                             if (Number(iii.ID_slova) === Number(buttonID)) {
                                                                 secondZoneParagraph.innerHTML = `<a href="${iii.adresa}">${item.Зона_2}</a>`;
                                                             }
