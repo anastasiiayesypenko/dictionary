@@ -19,6 +19,7 @@ const gramCodesTable = document.querySelector('.template-table-gramCodes');
 const lsvZoneTemplate = document.querySelector('#lsvZoneTemplate');
 const lsvZoneTable = document.querySelector('.template-table-lsvZone');
 const wordCombTable = document.querySelector('.table-wordComb');
+const wordTable = document.querySelector('.table-word');
 let wordButton;
 
 
@@ -307,12 +308,6 @@ function onLoaded() {
                                                 })
                                                 .catch(err => console.log(err));
 
-                                            // let seventhZoneTitle = document.createElement('h3');
-                                            // seventhZoneTitle.classList.add('table__info-title');
-                                            // seventhZoneTitle.textContent = `Епідигматичні (дериваційні) відношення реєстрової одиниці:`;
-                                            // let seventhZoneParagraph = document.createElement('p');
-                                            // seventhZoneParagraph.textContent = `${ item.Зона_7 }`;
-                                            // seventhZoneParagraph.classList.add('table__paragraph');
 
 
                                             let lsvThirdZoneTitle = document.createElement('button');
@@ -348,9 +343,11 @@ function onLoaded() {
                                                 lsvseventhZoneParagraph.classList.toggle('hidden');
                                             })
                                             lsvseventhZoneTitle.classList.add('table__info-title');
-                                            lsvseventhZoneTitle.textContent = `1) Епідигматичні (дериваційні) відношення реєстрової одиниці:`;
+                                            lsvseventhZoneTitle.textContent = `Епідигматичні (дериваційні) відношення реєстрової одиниці:`;
                                             let lsvseventhZoneParagraph = document.createElement('p');
                                             lsvseventhZoneParagraph.textContent = `${i.Зона_7_ЛСВ}`;
+                                            const delEpidegm = lsvseventhZoneParagraph.textContent.replace(/7\.\ епідигм\ .+7\.1\. афікс/i, '</br><p style="font-weight:900">Словотворчі афікси:</p></br>');
+                                            lsvseventhZoneParagraph.innerHTML = delEpidegm.replace('7.2. складсл', '</br><p style="font-weight:900; margin-top: 15px;">СКЛАДНІ СЛОВА:</p></br>');
                                             lsvseventhZoneParagraph.classList.add('table__paragraph', 'hidden');
 
 
@@ -391,16 +388,8 @@ function onLoaded() {
                                             let lsvfifthZoneParagraph = document.createElement('p');
                                             lsvfifthZoneParagraph.textContent = `${i.Зона_5_ЛСВ}`;
                                             lsvfifthZoneParagraph.classList.add('table__paragraph', 'hidden');
-                                            let lsvseventhZoneTitle = document.createElement('button');
-                                            lsvseventhZoneTitle.addEventListener('click', function () {
-                                                lsvseventhZoneParagraph.classList.toggle('hidden');
-                                            })
-                                            lsvseventhZoneTitle.classList.add('table__info-title');
-                                            lsvseventhZoneTitle.textContent = num + `) Епідигматичні (дериваційні) відношення реєстрової одиниці:`;
-                                            let lsvseventhZoneParagraph = document.createElement('p');
-                                            lsvseventhZoneParagraph.textContent = `${i.Зона_7_ЛСВ}`;
-                                            lsvseventhZoneParagraph.classList.add('table__paragraph', 'hidden');
-                                            td.append(lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph, lsvseventhZoneTitle, lsvseventhZoneParagraph);
+
+                                            td.append(lsvThirdZoneTitle, lsvThirdZoneParagraph, lsvFourthZoneTitle, lsvFourthZoneParagraph, lsvfifthZoneTitle, lsvfifthZoneParagraph);
                                             tableRow.append(td);
                                         }
 
@@ -512,9 +501,15 @@ function onLoaded() {
                                         })
                                         seventhZoneTitle.classList.add('table__info-title');
                                         seventhZoneTitle.textContent = `Епідигматичні (дериваційні) відношення реєстрової одиниці:`;
+
                                         let seventhZoneParagraph = document.createElement('p');
                                         seventhZoneParagraph.textContent = `${item.Зона_7}`;
                                         seventhZoneParagraph.classList.add('table__paragraph', 'hidden');
+                                        if (seventhZoneParagraph.textContent.includes('складсл')) {
+                                            console.log('za')
+                                        }
+                                        // seventhZoneParagraph.textContent.replace(/складсл/gi, "Складні слова: ")
+
 
 
 
@@ -579,6 +574,90 @@ function onLoaded() {
                                             outWrap.classList.add('outwrap');
                                             let kontextLabel = document.createElement('button')
                                             kontextLabel.textContent = i.kontext;
+                                            kontextLabel.addEventListener('click', function () {
+                                                inWrap.classList.toggle('hidden');
+                                            });
+                                            console.log(i.deryvat);
+                                            const inWrap = document.createElement('div');
+                                            inWrap.classList.add('wide');
+                                            kontextLabel.classList.add('iwcF');
+                                            let exampleLabel = document.createElement('p');
+                                            exampleLabel.classList.add('table__paragraph');
+                                            exampleLabel.textContent = i.pryklad;
+                                            let sourseLabel = document.createElement('p');
+                                            sourseLabel.classList.add('table__paragraph');
+                                            sourseLabel.textContent = i.drzerelo;
+                                            let exampleTitle = document.createElement('h3');
+                                            exampleTitle.classList.add('table__info-title');
+                                            exampleTitle.textContent = number + ") Приклад: ";
+                                            let sourseTitle = document.createElement('h3');
+                                            sourseTitle.classList.add('table__info-title');
+                                            sourseTitle.textContent = number + ") Джерело прикладу:";
+                                            inWrap.classList.add('hidden');
+                                            outWrap.append(kontextLabel, inWrap);
+                                            inWrap.append(exampleTitle, exampleLabel, sourseTitle, sourseLabel);
+                                            td.append(outWrap);
+                                        }
+                                    });
+                                })
+                                .catch(err => console.log(err));
+                        };
+                        if (td.textContent.length === 0) {
+                            findExample(event, buttonWord.dataset.id);
+                        } else {
+                            td.classList.toggle('hidden');
+                            event.target.classList.toggle('target');
+                        }
+
+                    });
+
+                };
+            }
+        })
+        .catch(error => console.log(error));
+
+
+    const indexWords = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_arsun/master/bd/zone.json')
+        .then(response => {
+            if (response.ok) return response.json();
+            throw new Error(response.statusText);
+        })
+        .then(data => {
+            for (let item of data) {
+                if (item.id != 31) {
+
+                    let tr = document.createElement('tr');
+                    let td = document.createElement('td');
+                    td.classList.add('table-cell--info');
+                    td.classList.add('td', 'iwc');
+                    tr.classList.add('table__info-tr');
+                    td.classList.add('hidden');
+                    let buttonWord = document.createElement('button');
+                    buttonWord.classList.add('main-word-button', 'iwb');
+                    buttonWord.textContent = `${item.id}. ${item.СЛОВО}`;
+                    buttonWord.dataset.id = item.id;
+                    wordTable.append(buttonWord, td);
+
+                    buttonWord.addEventListener('click', function (event) {
+
+
+                        function findExample(event, buttonID) {
+                            td.classList.toggle('hidden');
+                            event.target.classList.add('target');
+                            let exampleSourse = fetch('https://raw.githubusercontent.com/anastasiiayesypenko/dictionary_arsun/master/bd/indexSliv.json')
+                                .then(response => {
+                                    if (response.ok) return response.json();
+                                    throw new Error(response.statusText);
+                                })
+                                .then(example => {
+                                    let number = 0;
+                                    let arr = example.filter(i => {
+                                        if (Number(i.id_head_slovospoluka) === Number(buttonID)) {
+                                            number++;
+                                            const outWrap = document.createElement('div');
+                                            outWrap.classList.add('outwrap');
+                                            let kontextLabel = document.createElement('button')
+                                            kontextLabel.textContent = i.deryvat;
                                             kontextLabel.addEventListener('click', function () {
                                                 inWrap.classList.toggle('hidden');
                                             });

@@ -635,8 +635,21 @@ body {
 
     .dictionary-bd__table-title {
         font-size: 35px;
-        color: #1d172c;
+        color: #e67433;
         margin-bottom: 30px;
+        margin-left: 30px;
+        position: relative;
+    }
+
+    .dictionary-bd__table-title::after {
+        content: "";
+        display: block;
+        background: #e67433;
+        position: absolute;
+        width: 12px;
+        top: -10px;
+        left: -30px;
+        height: 50px;
     }
 
     .dictionary-bd__table-wrapper {
@@ -756,7 +769,8 @@ body {
         display: none;
     }
 
-    .table-wordComb {
+    .table-wordComb,
+    .table-word {
         display: flex;
         flex-wrap: wrap;
     }
