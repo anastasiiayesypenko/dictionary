@@ -346,7 +346,7 @@ function onLoaded() {
                                             lsvseventhZoneTitle.textContent = `Епідигматичні (дериваційні) відношення реєстрової одиниці:`;
                                             let lsvseventhZoneParagraph = document.createElement('p');
                                             lsvseventhZoneParagraph.textContent = `${i.Зона_7_ЛСВ}`;
-                                            const delEpidegm = lsvseventhZoneParagraph.textContent.replace(/7\.\ епідигм\ .+7\.1\. афікс/i, '</br><p style="font-weight:900">Словотворчі афікси:</p></br>');
+                                            const delEpidegm = lsvseventhZoneParagraph.textContent.replace(/7\.\ епідигм\ .*7\.1\. афікс/i, '</br><p style="font-weight:900">Словотворчі афікси:</p></br>');
                                             lsvseventhZoneParagraph.innerHTML = delEpidegm.replace('7.2. складсл', '</br><p style="font-weight:900; margin-top: 15px;">СКЛАДНІ СЛОВА:</p></br>');
                                             lsvseventhZoneParagraph.classList.add('table__paragraph', 'hidden');
 
